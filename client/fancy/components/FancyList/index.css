@@ -1,0 +1,23 @@
+.Select-small .Select-input {
+    height: 28px
+}
+
+.Select-small .Select-placeholder {
+    line-height: 30px
+}
+
+.Select-small .Select-control .Select-value {
+    line-height: 30px
+}
+
+.Select-small .Select-control {
+    height: 30px
+}
+
+.has-error .Select-control {
+    border: 1px solid #d9534f
+}
+
+.svShrtd .Select-value {
+    max-width: calc(100% - 28px) !important;
+}

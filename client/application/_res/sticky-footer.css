@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+html, body {
+    height: 100%;
+}
+
+.page-wrap {
+    min-height: 100%;
+    padding-top: 60px;
+    /* equal to footer height */
+    margin-bottom: -110px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.site-footer, .page-wrap:after {
+    height: 110px;
+}
+
+.site-footer {
+    background-color: #222222;
+}
+
+.div100 {
+    height: 100%;
+}

@@ -1,0 +1,11 @@
+.action-item:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.action-item {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

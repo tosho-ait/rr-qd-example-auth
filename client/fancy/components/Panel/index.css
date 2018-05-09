@@ -1,0 +1,29 @@
+.panel-heading:hover {
+    cursor: pointer;
+}
+
+.panel-collapse {
+    max-height: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s ease;
+    overflow: hidden;
+}
+
+.panel-collapse.open {
+    max-height: 5000px;
+    transform: scaleY(1);
+}
+
+.panel-title {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: inline-block;
+}
+
+.panel-title-gi {
+    top: -1px;
+    padding-right: 5px;
+}

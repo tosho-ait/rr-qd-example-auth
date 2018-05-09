@@ -1,0 +1,59 @@
+.fancy-dete {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.fancy-dete-clear {
+    position: absolute;
+    right: 30px;
+    top: 9px;
+    height: 19px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.fancy-dete-select-clear {
+    font-size: 18px;
+    line-height: 1;
+    color: #999;
+    cursor: pointer;
+}
+
+.fancy-dete-select-clear:hover {
+    color: #D0021B;
+}
+
+.rw-input {
+    height: 34px;
+}
+
+.Select-small .Select-input {
+    height: 28px
+}
+
+.Select-small .Select-placeholder {
+    line-height: 30px
+}
+
+.Select-small .Select-control .Select-value {
+    line-height: 30px
+}
+
+.Select-small .Select-control {
+    height: 30px
+}
+
+.has-error .Select-control {
+    border: 1px solid #d9534f
+}
+
+.fancy-dms .Select-menu-outer {
+    max-height: 330px !important;
+}
+
+.fancy-dms .Select-menu {
+    max-height: 328px !important;;
+}
