@@ -1,4 +1,4 @@
-import {apiDeclare} from "react-fancy"
+import {apiDeclare} from "rr-qd"
 import {searchPpl} from "../actions/api"
 
 const initialSearchPpl = {all: [], data: {}, notFound: false}

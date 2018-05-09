@@ -1,6 +1,6 @@
 import {combineReducers} from "redux"
 import {reducer as form} from "redux-form"
-import {reducers} from "react-fancy"
+import {reducers} from "rr-qd"
 
 import contact from "./contact"
 import expense from "./expense"

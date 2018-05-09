@@ -1,4 +1,4 @@
-import {apiDeclare} from "react-fancy"
+import {apiDeclare} from "rr-qd"
 import {uploadUserImage} from "../actions/api"
 
 const user = (state = {image: null}, action) => {

@@ -1,4 +1,4 @@
-import {apiDeclare} from "react-fancy"
+import {apiDeclare} from "rr-qd"
 
 export const API_REGISTERFORM = 'api/auth/register'
 export const API_RECOVERFORM = 'api/auth/reset'

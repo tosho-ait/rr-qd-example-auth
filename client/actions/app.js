@@ -1,4 +1,4 @@
-import {apiDeclare} from "react-fancy"
+import {apiDeclare} from "rr-qd"
 
 let {hideMessage, hideInfoMessage, hideWarningMessage, hideErrorMessage, logout} = apiDeclare
 
