@@ -1,5 +1,5 @@
 import React from "react"
-import ActionItem from "../../fancy/components/ActionItem"
+import RrAction from "../../components/RrAction"
 import {routeDo} from "../../actions/app"
 
 class InfoInForm extends React.Component {
@@ -19,7 +19,7 @@ class InfoInForm extends React.Component {
                     </div>
                     <div class="form-group fg-custom">
                         <div class="border-top">
-                            <ActionItem action={routeDo} values={[""]} classes="btn btn-warning"
+                            <RrAction action={routeDo} values={[""]} classes="btn btn-warning"
                                         label="Back to Login"/>
                         </div>
                     </div>

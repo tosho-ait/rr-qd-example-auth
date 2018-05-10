@@ -2,9 +2,10 @@ import React from "react"
 import {connect} from "react-redux"
 import {bindActionCreators} from "redux"
 import NavBar from "../../components/NavBar"
-import MessageBar from "../../fancy/components/MessageBar"
-import PagedTable from "../../fancy/components/PagedTable"
-import ActionItem from "../../fancy/components/ActionItem"
+import MessageBar from "../../components/MessageBar"
+
+import RrAction from "../../components/RrAction"
+
 import {
     adminUsers,
     updaterCategory,
@@ -13,6 +14,7 @@ import {
     updaterImage,
     updaterUserImage
 } from "../../actions/api"
+
 import moment from "moment"
 
 class Admin extends React.Component {
@@ -61,18 +63,18 @@ class Admin extends React.Component {
                         <MessageBar />
                     </div>
                     <div class="col-sm-12">
-                        <ActionItem action={updaterCategory} label="Update Categories" classes="btn btn-default"/>
+                        <RrAction action={updaterCategory} label="Update Categories" classes="btn btn-default"/>
                         &nbsp;
-                        <ActionItem action={updaterExpense} label="Update Expenses" classes="btn btn-default"/>
+                        <RrAction action={updaterExpense} label="Update Expenses" classes="btn btn-default"/>
                         &nbsp;
-                        <ActionItem action={updaterContact} label="Update conatcts" classes="btn btn-default"/>
+                        <RrAction action={updaterContact} label="Update conatcts" classes="btn btn-default"/>
                         &nbsp;
-                        <ActionItem action={updaterImage} label="Update images" classes="btn btn-default"/>
+                        <RrAction action={updaterImage} label="Update images" classes="btn btn-default"/>
                         &nbsp;
-                        <ActionItem action={updaterUserImage} label="Update user images" classes="btn btn-default"/>
+                        <RrAction action={updaterUserImage} label="Update user images" classes="btn btn-default"/>
                     </div>
                     <div class="col-sm-12">
-                        <PagedTable header={this._header()} body={this._body()}/>
+                        {/*<PagedTable header={this._header()} body={this._body()}/>*/}
                     </div>
                     <div class="col-sm-12">
                         <br />

@@ -1,0 +1,11 @@
+.rr-qd-action:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.rr-qd-action {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

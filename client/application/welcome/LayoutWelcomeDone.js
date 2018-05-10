@@ -2,7 +2,7 @@ import React from "react"
 import NavBar from "../../components/NavBar"
 import WelcomeJumbo from "./WelcomeJumbo"
 import {connect} from "react-redux"
-import ActionItem from "../../fancy/components/ActionItem"
+import RrAction from "../../components/RrAction"
 import {routeDo} from "../../actions/app"
 
 
@@ -34,7 +34,7 @@ class LayoutWelcomeDone extends React.Component {
                                 </div>
                                 <div class="form-group fg-custom">
                                     <div class="border-top">
-                                        <ActionItem action={routeDo}
+                                        <RrAction action={routeDo}
                                                     values={[""]}
                                                     classes="btn btn-warning"
                                                     label="Back to Login"/>

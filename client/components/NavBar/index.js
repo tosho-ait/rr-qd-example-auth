@@ -1,26 +1,10 @@
 import React from "react"
 import {connect} from "react-redux"
-import {bindActionCreators} from "redux"
-import ActionItem from "../../fancy/components/ActionItem"
+import RrAction from "../RrAction"
 import {Navbar, Nav, NavDropdown, MenuItem} from "react-bootstrap"
-import {uploadToExpense} from "../../actions/api"
 import {routeDo, logoutDo} from "../../actions/app"
 
 class NavBar extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.onFileSelect = this.onFileSelect.bind(this)
-    }
-
-    onFileSelect(event) {
-        event.preventDefault();
-        const files = [...event.target.files]
-        const formData = new FormData();
-        formData.append('token', this.props.token);
-        formData.append('file', files[0]);
-        this.props.uploadToExpense({formData})
-    }
 
     render() {
         let auth = this.props.auth
@@ -28,27 +12,20 @@ class NavBar extends React.Component {
         if (auth.isAuthenticated === true) {
             content = <Navbar.Collapse>
                 <Nav>
-                    <li><ActionItem action={routeDo} values={["", {}]} label="Expenses" icon="list-alt"/></li>
-                    <li><ActionItem action={routeDo} values={["charts", {}]} label="Charts" icon="stats"/></li>
-                    <li><ActionItem action={routeDo} values={["shared", {}]} label="Shared" icon="scale"/></li>
-                    {/*<li class="mt8"><span class="btn btn-default btn-file">*/}
-                        {/*snap a bill <input onChange={this.onFileSelect} type="file" accept="image/*" capture="camera"/></span>*/}
-                    {/*</li>*/}
+                    <li><RrAction action={routeDo} values={["", {}]} label="Home" icon="list-alt"/></li>
                 </Nav>
                 <Nav pullRight>
                     <li>
                         <NavDropdown title={auth.userDetails.name} id="basic-nav-dropdown">
-                            <li><ActionItem action={routeDo} values={["connections/my", {}]} label="contacts"
-                                            icon="user"/></li>
-                            <li><ActionItem action={routeDo} values={["categories", {}]} label="categories"
-                                            icon="wrench"/></li>
-                            <li><ActionItem action={routeDo} values={["settings", {}]} label="user settings"
-                                            icon="cog"/></li>
+                            <li><RrAction action={routeDo} values={["settings", {}]} label="user settings">
+                                <i class="glyphicon glyphicon-cog"/></RrAction></li>
                             { auth.userDetails.admin &&
-                            <li><ActionItem action={routeDo} values={["admin", {}]} label="admin panel" icon="king"/>
+                            <li><RrAction action={routeDo} values={["admin", {}]} label="admin panel">
+                                <i class="glyphicon glyphicon-king"/></RrAction>
                             </li> }
                             <MenuItem divider/>
-                            <li><ActionItem action={logoutDo} label="logout" icon="log-out"/></li>
+                            <li><RrAction action={logoutDo} label="logout">
+                                <i class="glyphicon glyphicon-log-out"/></RrAction></li>
                         </NavDropdown>
                     </li>
                 </Nav>
@@ -58,7 +35,7 @@ class NavBar extends React.Component {
         return <Navbar inverse fixedTop>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="#">budgetSimply.io</a>
+                    <a href="#">RR-QD EXAMPLE</a>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
@@ -70,5 +47,5 @@ class NavBar extends React.Component {
 
 export default connect(
     state => ({auth: state.auth}),
-    dispatch => bindActionCreators({uploadToExpense: uploadToExpense.action}, dispatch)
+    dispatch => ({})
 )(NavBar)

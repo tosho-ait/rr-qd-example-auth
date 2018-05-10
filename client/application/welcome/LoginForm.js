@@ -1,7 +1,7 @@
 import React from "react"
 import {reduxForm} from "redux-form"
-import ActionItem from "../../fancy/components/ActionItem"
-import FormFieldError from "../../fancy/components/FormFieldError"
+import RrAction from "../../components/RrAction"
+import FormFieldError from "../../components/FormFieldError"
 import {loginSubmit} from "../../actions/api"
 import {routeDo} from "../../actions/app"
 
@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
                         </div>
                         <div class="form-group fg-custom">
                             <div class="input-group">
-                                <ActionItem action={routeDo} values={["reset"]} label="Forgot Password?"/>
+                                <RrAction action={routeDo} values={["reset"]} label="Forgot Password?"/>
                             </div>
                         </div>
                         <div class="form-group fg-custom">
@@ -42,7 +42,7 @@ class LoginForm extends React.Component {
                         </div>
                         <div class="form-group fg-custom">
                             <div class="border-top">
-                                Don't have an account? <ActionItem action={routeDo} values={["register"]}
+                                Don't have an account? <RrAction action={routeDo} values={["register"]}
                                                                    label="Sign Up Here"/>
                             </div>
                         </div>

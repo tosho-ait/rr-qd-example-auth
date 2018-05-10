@@ -1,5 +1,5 @@
 import React from "react"
-import ActionItem from "../../fancy/components/ActionItem"
+import RrAction from "../RrAction"
 import {routeDo} from "../../actions/app"
 
 let Footer = () => {
@@ -7,13 +7,13 @@ let Footer = () => {
         <br/>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <ActionItem action={routeDo} values={["", ""]} classes="gerylink" label="Home"/>
+                <RrAction action={routeDo} values={["", ""]} classes="gerylink" label="Home"/>
                 &nbsp;|&nbsp;
-                <ActionItem action={routeDo} values={["therms", ""]} classes="gerylink" label="Terms of Service"/>
+                <RrAction action={routeDo} values={["therms", ""]} classes="gerylink" label="Terms of Service"/>
                 &nbsp;|&nbsp;
-                <ActionItem action={routeDo} values={["policy", ""]} classes="gerylink" label="Privacy Policy"/>
+                <RrAction action={routeDo} values={["policy", ""]} classes="gerylink" label="Privacy Policy"/>
                 &nbsp;|&nbsp;
-                <ActionItem action={routeDo} values={["about", ""]} classes="gerylink" label="About"/>
+                <RrAction action={routeDo} values={["about", ""]} classes="gerylink" label="About"/>
             </div>
         </div>
         <br/>

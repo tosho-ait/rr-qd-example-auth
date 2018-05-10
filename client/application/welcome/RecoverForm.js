@@ -1,7 +1,7 @@
 import React from "react"
 import {reduxForm} from "redux-form"
 import {recoverFormSubmit} from "../../actions/api"
-import ActionItem from "../../fancy/components/ActionItem"
+import RrAction from "../../components/RrAction"
 import {routeDo} from "../../actions/app"
 
 class RecoverForm extends React.Component {
@@ -30,7 +30,7 @@ class RecoverForm extends React.Component {
                         </div>
                         <div class="form-group fg-custom">
                             <div class="border-top">
-                                <ActionItem action={routeDo} values={[""]} classes="btn btn-warning"
+                                <RrAction action={routeDo} values={[""]} classes="btn btn-warning"
                                             label="Back to Login"/>
                                 <button type="submit" disabled={submitting} class="btn btn-success pull-right">
                                     <span>Reset Password</span>

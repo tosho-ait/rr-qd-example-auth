@@ -1,10 +1,12 @@
 import React from "react"
 import {reduxForm} from "redux-form"
-import FormFieldError from "../../fancy/components/FormFieldError"
-import FancyListAL from "../../fancy/components/FancyListAL"
-import MessageBar from "../../fancy/components/MessageBar"
-import {updateMe, uploadUserImage, loadListPublic, reLoginSubmit} from "../../actions/api"
+
+import FormFieldError from "../../components/FormFieldError"
+import MessageBar from "../../components/MessageBar"
+
+import {updateMe, uploadUserImage, reLoginSubmit} from "../../actions/api"
 import {bindActionCreators} from "redux"
+
 import Dropzone from "react-dropzone"
 
 class SettingsForm extends React.Component {
@@ -39,7 +41,7 @@ class SettingsForm extends React.Component {
     }
 
     render() {
-        const {fields: {email, name, password, passwordconfirm, oldpassword, location, country, image}, handleSubmit, error, submitting, tmpImage} = this.props;
+        const {fields: {email, name, password, passwordconfirm, oldpassword, image}, handleSubmit, error, submitting, tmpImage} = this.props;
 
         let dzStyle = {
             padding: "8px",
@@ -96,17 +98,6 @@ class SettingsForm extends React.Component {
                                         <label>Name</label>
                                         <input class="form-control" type="text" {...name}/>
                                         <FormFieldError field={name}/>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="form-group">
-                                        <label>Country</label>
-                                        <FancyListAL
-                                            listName="country"
-                                            autoLoadAction={loadListPublic.action}
-                                            placeholder=" "
-                                            {...country} />
-                                        <FormFieldError field={country}/>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
