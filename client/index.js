@@ -2,12 +2,12 @@ import "babel-polyfill"
 import React from "react"
 import {render} from "react-dom"
 import {Provider} from "react-redux"
-import {fancyInit} from "rr-qd"
+import {rrInit} from "rr-qd"
 import budgetSimplyApp from "./reducers/index"
 import Application from "./application"
 import {loadList} from "./actions/api"
 
-let store = fancyInit({
+let store = rrInit({
     reducers: budgetSimplyApp,
     autoLoadAction: loadList.action
 })

@@ -17,6 +17,9 @@ class Home extends React.Component {
                     <div class="col-sm-12">
                         <MessageBar />
                     </div>
+                    <div class="col-sm-12">
+                
+                    </div>
                 </div>
             </div>
         </div>

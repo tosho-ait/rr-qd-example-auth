@@ -13,8 +13,7 @@ import Therms from "./About/therms.js"
 import Policy from "./About/policy.js"
 import Settings from "./Settings"
 import Footer from "./../components/Footer"
-import RrRoute from "../components/RrRoute"
-// import {RrRoute} from "rr-qd"
+import {RrRoute, RrSetMomentLocale} from "rr-qd"
 
 import {authPing} from '../actions/api'
 
@@ -32,7 +31,7 @@ class Application extends React.Component {
             this.props.authPing()
         }
         return <div class="div100">
-            {/*<RrSetMomentLocale locale="us"/>*/}
+            <RrSetMomentLocale locale="us"/>
             <div class="page-wrap">
                 <RrRoute routeStartsWith={["error"]}>
                     <div>oops, something went wrong</div>

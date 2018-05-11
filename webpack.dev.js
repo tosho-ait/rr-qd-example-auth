@@ -15,6 +15,13 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],
+    resolve: {
+        symlinks: false,
+        modules: [
+            path.resolve(__dirname, '..', 'node_modules'),
+            'node_modules'
+        ],
+    },
     module: {
         loaders: [
             {

@@ -1,5 +1,5 @@
 import React from "react"
-import RrAction from "../RrAction"
+import {RrAction} from "rr-qd"
 import {routeDo} from "../../actions/app"
 
 let Footer = () => {
