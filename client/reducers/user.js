@@ -1,4 +1,4 @@
-import {apiDeclare} from "rr-qd"
+import {rrAccessApi} from "rr-qd"
 import {uploadUserImage} from "../actions/api"
 
 const user = (state = {image: null}, action) => {
@@ -6,7 +6,7 @@ const user = (state = {image: null}, action) => {
         case uploadUserImage.response:
             return Object.assign({}, state, {image: action.payload.target.fileid})
         default:
-            if (apiDeclare.hasAugmentSetPublic(action)) {
+            if (rrAccessApi.hasAugmentSetPublic(action)) {
                 return {image: null}
             }
             return state

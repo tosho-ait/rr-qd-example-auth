@@ -1,4 +1,4 @@
-import {apiDeclare} from "rr-qd"
+import {rrAccessApi} from "rr-qd"
 
 export const API_REGISTERFORM = 'api/auth/register'
 export const API_RECOVERFORM = 'api/auth/reset'
@@ -20,7 +20,6 @@ export const AP_AUTH_LOGIN = 'api/auth/authenticate'
 
 export const AP_AUTH_RELOGIN = 'api/user/refresh'
 
-
 let {
     apiCall,
     GET,
@@ -37,7 +36,7 @@ let {
     includeParameters,
     loginCall,
     scrollTop
-} = apiDeclare
+} = rrAccessApi
 
 
 export const loadList = apiCall({

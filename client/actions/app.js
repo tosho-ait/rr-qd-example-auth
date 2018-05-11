@@ -1,6 +1,6 @@
-import {apiDeclare} from "rr-qd"
+import {rrAccessApi} from "rr-qd"
 
-let {hideMessage, hideInfoMessage, hideWarningMessage, hideErrorMessage, logout} = apiDeclare
+let {hideMessage, hideInfoMessage, hideWarningMessage, hideErrorMessage, logout} = rrAccessApi
 
 export const msgClearMessage = () => ({type: "DNM", meta: {hideMessage}})
 export const msgClearError = () => ({type: "DNM", meta: {hideErrorMessage}})
