@@ -13,15 +13,6 @@ module.exports = {
         publicPath: '/static/'
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {NODE_ENV: JSON.stringify('production')}
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
         new CopyWebpackPlugin([
             {from: 'client/index.html'},
             {from: 'client/index.js'}
@@ -31,7 +22,7 @@ module.exports = {
         })
     ],
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 loader: 'babel-loader',

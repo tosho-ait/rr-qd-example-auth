@@ -2,7 +2,7 @@ var express = require('express')
 var morgan = require('morgan')
 var config = require('./config')
 
-var app = require('./server/server')(app, express, config)
+var app = require('./server/server')(express, config)
 
 app.use('/static', express.static(__dirname + '/dist'))
 app.use('/uploads', express.static(__dirname + '/uploads'))
