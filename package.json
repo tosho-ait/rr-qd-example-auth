@@ -1,18 +1,19 @@
 {
-  "name": "budgetsimply-react",
+  "name": "rr-qd-example-auth",
   "version": "0.0.0",
-  "description": "budgetsimply.io react",
+  "description": "rr-qd based example app",
+  "license": "MIT",
+  "author": "Tosho Ivanov <tosho-ait@gmail.com>",
+  "homepage": "https://github.com/tosho-ait/rr-qd-example-auth#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tosho-ait/rr-qd-example-auth.git"
+  },
   "scripts": {
     "dev": "nodemon --watch server --watch config.js --watch client/static server.dev.js",
     "prod": "webpack --progress --config webpack.prod.js && node server.prod.js",
     "pack": "webpack --progress --config webpack.prod.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/netbits-io/budgetsimply-react.git"
-  },
-  "license": "MIT",
-  "homepage": "http://budgetsimply.io",
   "dependencies": {
     "async": "^2.0.0-rc.6",
     "babel-polyfill": "^6.26.0",
