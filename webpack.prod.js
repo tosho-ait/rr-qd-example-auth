@@ -6,6 +6,7 @@ module.exports = {
     entry: [
         './client/index'
     ],
+    mode: "production",
     output: {
         path: path.join(__dirname, './dist'),
         filename: 'bundle.js',
@@ -34,12 +35,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    babelrc: false,
-                    presets: ["es2015", "react"],
-                    plugins: ['react-html-attrs', 'transform-object-rest-spread'],
-                },
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
@@ -53,7 +49,7 @@ module.exports = {
                 test: /\.(jpe?g|png|gif)$/i,
                 loaders: [
                     'file-loader?hash=sha512&digest=hex&name=images/[hash].[ext]',
-                    'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                    'image-webpack-loader?bypassOnDebug'
                 ],
             },
             {
