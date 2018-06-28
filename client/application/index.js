@@ -9,7 +9,7 @@ import LayoutWelcomeDone from "./welcome/LayoutWelcomeDone"
 import Home from "./Home"
 import Admin from "./Admin"
 import About from "./About/about.js"
-import Therms from "./About/therms.js"
+import Terms from "./About/terms.js"
 import Policy from "./About/policy.js"
 import Settings from "./Settings"
 import Footer from "./../components/Footer"
@@ -42,8 +42,8 @@ class Application extends React.Component {
                                     <RrRoute routeMatches={["about"]}>
                                         <About />
                                     </RrRoute>
-                                    <RrRoute routeMatches={["therms"]}>
-                                        <Therms />
+                                    <RrRoute routeMatches={["terms"]}>
+                                        <Terms />
                                     </RrRoute>
                                     <RrRoute routeMatches={["policy"]}>
                                         <Policy />
@@ -64,8 +64,8 @@ class Application extends React.Component {
                                     <RrRoute routeMatches={["about"]}>
                                         <About />
                                     </RrRoute>
-                                    <RrRoute routeMatches={["therms"]}>
-                                        <Therms />
+                                    <RrRoute routeMatches={["terms"]}>
+                                        <Terms />
                                     </RrRoute>
                                     <RrRoute routeMatches={["policy"]}>
                                         <Policy />

@@ -37,6 +37,9 @@ module.exports = function (express, config) {
         '/api/auth', require('./routes/public/auth'))
 
     construct.addRoutes([],
+        '/api/recover', require('./routes/public/recover'))
+
+    construct.addRoutes([],
         '/api/usrimg', require('./routes/public/userImage'))
 
     construct.addRoutes([LISTS_MW],

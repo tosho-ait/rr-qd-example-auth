@@ -1,8 +1,8 @@
 import {rrAccessApi} from "rr-qd"
 
 export const API_REGISTERFORM = 'api/auth/register'
-export const API_RECOVERFORM = 'api/auth/reset'
-export const API_RESETFORM = 'api/auth/forgot'
+export const API_RECOVERFORM = 'api/recover/reset'
+export const API_RESETFORM = 'api/recover/forgot'
 
 export const API_UPDATE_ME = 'api/user/update'
 export const API_UPLOADUI = 'api/upload/userimg'
