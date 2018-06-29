@@ -6,6 +6,7 @@ var config = require('../../../config')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
 var valid = require('../../util/valid.js')
+var validator = require('../../util/validator.js')
 var msg = require('../../res/msg')
 
 // super secret for creating tokens
@@ -17,6 +18,26 @@ module.exports = function (app, express) {
 
     // register user route
     authRouter.post('/register', function (req, res) {
+
+        validator()
+            .target("email")
+            .required("Please input an Email")
+
+            .target("name")
+            .required("Please input a Name")
+            .minLength(8, "Name must be at least 8 characters")
+            .maxLength(25, "Name must be no more than 25 characters")
+            .custom(object => {}, "Name already in use") // TODO verify that name is not used
+
+            .target("password")
+            .required("Please input a Password")
+            .minLength(8, "Password must be at least 8 characters")
+            .maxLength(25, "Password must be no more than 25 characters")
+
+            .target("passwordconfirm")
+            .required("Please repeat your Password")
+            .custom(object => !object.password || object.password === object.passwordconfirm, 'Passwords do not match')
+
         InPromise
             .valid({
                 _error: msg.USER_REGISTER_CANT_CREATE,
@@ -87,7 +108,8 @@ module.exports = function (app, express) {
                     resetPasswordToken: req.body.token,
                     resetPasswordExpires: {$gt: Date.now()},
                 },
-                errorMessage: 'Password reset link is invalid or has expired'})
+                errorMessage: 'Password reset link is invalid or has expired'
+            })
             .then(user => {
                 // TODO verify password strength
                 user.password = req.body.password
@@ -113,7 +135,12 @@ module.exports = function (app, express) {
             .then(() => InPromise.wrap(crypto.randomBytes)(20))
             .then(buf => buf.toString('hex'))
             .then(token => InPromise.mongo
-                .findOne({schema: User, criteria: {email: req.body.email}, errorMessage: 'No account with that email address exists.', orFail: true})
+                .findOne({
+                    schema: User,
+                    criteria: {email: req.body.email},
+                    errorMessage: 'No account with that email address exists.',
+                    orFail: true
+                })
                 .then(user => ({token, user})))
             .then(pair => {
                 pair.user.resetPasswordToken = pair.token
