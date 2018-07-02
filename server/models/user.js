@@ -6,25 +6,18 @@ var bcrypt = require('bcrypt-nodejs')
 var UserSchema = new Schema({
     name: {
         type: String,
-        required: [true, 'Please input a Name'],
-        minlength: [8, 'Name must be at least 8 characters'],
-        maxlength: [25, 'Name must be no more than 25 characters']
-    },
-    location: {
-        type: String,
-        maxlength: [50, 'Location must be no more than 50 characters']
-    },
-    country: {
-        type: String
+        required: [true],
+        minlength: [8],
+        maxlength: [25]
     },
     email: {
         type: String,
-        required: [true, 'Please input an E-mail'],
+        required: [true],
         index: {unique: true}
     },
     password: {
         type: String,
-        required: [true, 'Please input a Password'],
+        required: [true],
         select: false
     },
     image: String,
@@ -41,10 +34,13 @@ UserSchema.pre('save', function (next) {
     if (!user.created_at) {
         user.created_at = new Date()
     }
-    if (!user.isModified('password'))
+    if (!user.isModified('password')) {
         return next()
+    }
     bcrypt.hash(user.password, null, null, function (err, hash) {
-        if (err) return next(err)
+        if (err) {
+            return next(err)
+        }
         user.password = hash
         next()
     })
@@ -53,20 +49,6 @@ UserSchema.pre('save', function (next) {
 UserSchema.methods.comparePassword = function (password) {
     var user = this;
     return bcrypt.compareSync(password, user.password)
-}
-
-UserSchema.methods.checkValid = function (validation, _error) {
-    var user = this
-    if (_error)
-        validation._error = _error
-    error = user.validateSync()
-    if (error) {
-        for (var key in error.errors) {
-            validation[key] = error.errors[key].message
-            validation.hasErrors = true
-        }
-    }
-    return validation
 }
 
 module.exports = mongoose.model('User', UserSchema)
