@@ -6,6 +6,7 @@ var config = require('../../../config')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
 var valid = require('../../util/valid.js')
+var valid2 = require('../../util/valid2.js')
 var validator = require('../../util/validator.js')
 var msg = require('../../res/msg')
 
@@ -19,59 +20,26 @@ module.exports = function (app, express) {
     // register user route
     authRouter.post('/register', function (req, res) {
 
-        validator()
+        let checks = validator()
             .target("email")
+            .generalError("'Could not create user.'")
             .required("Please input an Email")
-
             .target("name")
             .required("Please input a Name")
             .minLength(8, "Name must be at least 8 characters")
             .maxLength(25, "Name must be no more than 25 characters")
-            .custom(object => {}, "Name already in use") // TODO verify that name is not used
-
+           // .custom(object => {}, "Name already in use") // TODO verify that name is not used
             .target("password")
             .required("Please input a Password")
             .minLength(8, "Password must be at least 8 characters")
             .maxLength(25, "Password must be no more than 25 characters")
-
             .target("passwordconfirm")
             .required("Please repeat your Password")
             .custom(object => !object.password || object.password === object.passwordconfirm, 'Passwords do not match')
+            .build()
 
         InPromise
-            .valid({
-                _error: msg.USER_REGISTER_CANT_CREATE,
-                email: {
-                    doCheckProperty: true,
-                    required: {_error: 'Please input an Email'},
-                },
-                name: {
-                    doCheckProperty: true,
-                    required: {_error: 'Please input a Name'},
-                    minLength: {_value: 8, _error: 'Name must be at least 8 characters'},
-                    maxLength: {_value: 25, _error: 'Name must be no more than 25 characters'}
-                },
-                location: {
-                    doCheckProperty: true,
-                    maxLength: {_value: 50, _error: 'Location must be no more than 50 characters'}
-                },
-                country: {
-                    doCheckProperty: true,
-                    required: {_error: 'Please select a Country'},
-                },
-                password: {
-                    doCheckProperty: true,
-                    required: {_error: 'Please input a Password'},
-                    minLength: {_value: 8, _error: 'Password must be at least 8 characters'},
-                },
-                passwordconfirm: {
-                    doCheckProperty: true,
-                    custom: {
-                        _condition: object => !object.password || object.password === object.passwordconfirm,
-                        _error: 'Passwords do not match'
-                    }
-                }
-            }, req.body)
+            .valid2(checks, req.body)
             .then(() => {
                 var user = new User()
                 user.name = req.body.name

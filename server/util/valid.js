@@ -5,21 +5,18 @@ var valid = (schema, object) => {
             if (object && schema) {
                 for (var property in schema) {
                     if (property != '_error' && schema[property].doCheckProperty) {
-
                         if (schema[property].required && !object[property]) {
                             errors[property] = schema[property].required._error
                             if (!errors._error && schema._error) {
                                 errors._error = schema._error
                             }
                         }
-
                         if (schema[property].required && !object[property]) {
                             errors[property] = schema[property].required._error
                             if (!errors._error && schema._error) {
                                 errors._error = schema._error
                             }
                         }
-
                         if (schema[property].minLength && object[property] && object[property].length) {
                             if (object[property].length < schema[property].minLength._value) {
                                 errors[property] = schema[property].minLength._error
@@ -28,7 +25,6 @@ var valid = (schema, object) => {
                                 }
                             }
                         }
-
                         if (schema[property].custom) {
                             // let me miss you
                             (function iif() {

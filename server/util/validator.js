@@ -15,26 +15,43 @@ let validator = (schemaArg) => {
             if (schema.length == 0) {
                 schema.push({target: name})
             } else {
-                schema.pop().target = name
+                schema[schema.length - 1].target = name
+            }
+            return validator(schema)
+        },
+        generalError: (message) => {
+            if (schema.length == 0) {
+                schema.push({error: message})
+            } else {
+                schema[schema.length - 1].error = message
             }
             return validator(schema)
         },
         required: (fieldError) => {
             schema.splice(
-                schema.length - 1,
-                0,
-                Object.assign({required: true, fieldError}, schema.pop()))
+                schema.length - 1, 0,
+                Object.assign({required: true, fieldError}, schema[schema.length - 1]))
             return validator(schema)
         },
-        minLength: () => {
+        minLength: (len, fieldError) => {
+            schema.splice(
+                schema.length - 1, 0,
+                Object.assign({minLength: len, fieldError}, schema[schema.length - 1]))
             return validator(schema)
         },
-        maxLength: () => {
+        maxLength: (len, fieldError) => {
+            schema.splice(
+                schema.length - 1, 0,
+                Object.assign({maxLength: len, fieldError}, schema[schema.length - 1]))
             return validator(schema)
         },
-        custom: () => {
+        custom: (func, fieldError) => {
+            schema.splice(
+                schema.length - 1, 0,
+                Object.assign({custom: func, fieldError}, schema[schema.length - 1]))
             return validator(schema)
-        }
+        },
+        build: () => copySchema(schema)
     }
 }
 
