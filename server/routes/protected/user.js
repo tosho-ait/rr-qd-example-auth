@@ -29,14 +29,6 @@ module.exports = function (app, express) {
                         minLength: {_value: 8, _error: 'Name must be at least 8 characters'},
                         maxLength: {_value: 25, _error: 'Name must be no more than 25 characters'}
                     },
-                    location: {
-                        doCheckProperty: true,
-                        maxLength: {_value: 50, _error: 'Location must be no more than 50 characters'}
-                    },
-                    country: {
-                        doCheckProperty: true,
-                        required: {_error: 'Please select a Country'},
-                    },
                     password: {
                         doCheckProperty: true,
                         minLength: {_value: 8, _error: 'Password must be at least 8 characters'},
@@ -62,8 +54,6 @@ module.exports = function (app, express) {
                 if (req.body.password) {
                     user.password = req.body.password
                 }
-                user.location = req.body.location
-                user.country = req.body.country
                 user.image = req.body.image
                 return user
             })
@@ -96,8 +86,6 @@ module.exports = function (app, express) {
                 admin: user.admin,
                 email: user.email,
                 name: user.name,
-                country: user.country,
-                location: user.location,
                 image: user.image,
             }))
             .then(userDetails => ({

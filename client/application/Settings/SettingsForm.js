@@ -54,7 +54,7 @@ class SettingsForm extends React.Component {
         }
 
         if (image.value) {
-            dzStyle = {...dzStyle, backgroundImage: 'url("api/usrimg/' + image.value + '")'}
+            dzStyle = {...dzStyle, backgroundImage: 'url("api/img/' + image.value + '")'}
         } else {
             dzStyle = {...dzStyle, border: "solid 1px #ccc"}
         }
@@ -67,15 +67,12 @@ class SettingsForm extends React.Component {
                 </div>
                 <div class="col-md-10 col-md-offset-1">
                     <div class="row">
-
                         {error && <div class="col-xs-12">
                             <div class="alert alert-danger"> {error} </div>
                         </div>}
-
                         <div class="col-xs-12">
                             <MessageBar />
                         </div>
-
                         <div class="col-xs-4">
                             <br />
                             <div class="pull-right">
@@ -84,7 +81,6 @@ class SettingsForm extends React.Component {
                                 </Dropzone>
                             </div>
                         </div>
-
                         <div class="col-xs-8">
                             <div class="row">
                                 <div class="col-xs-12">

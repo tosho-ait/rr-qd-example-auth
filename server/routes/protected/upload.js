@@ -1,4 +1,4 @@
-var UserImage = require('../../models/userImage')
+var Image = require('../../models/image')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
 var sharp = require('sharp')
@@ -27,7 +27,7 @@ module.exports = function (app, express) {
                 owner: req.decoded.user.email,
                 ownerId: req.decoded.user._id,
             }))
-            .then(img => InPromise.mongo.save({entity: new UserImage(img)}))
+            .then(img => InPromise.mongo.save({entity: new Image(img)}))
             .then(saved => ({path: req.file.path, filename: req.file.filename, fileid: saved._id}))
             .then(resUtil.success(res, 'Image saved.'))
             .catch(resUtil.error(res))

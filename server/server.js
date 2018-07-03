@@ -40,7 +40,7 @@ module.exports = function (express, config) {
         '/api/recover', require('./routes/public/recover'))
 
     construct.addRoutes([],
-        '/api/usrimg', require('./routes/public/userImage'))
+        '/api/img', require('./routes/public/image'))
 
     construct.addRoutes([LISTS_MW],
         '/api/publiclists', require('./routes/public/lists'))
@@ -54,8 +54,7 @@ module.exports = function (express, config) {
 
     // Admin ROUTES
     // TODO to be secured
-    construct.addRoutes([SECURE_MW, ALL_USERS_MW],
-        '/api/admin', require('./routes/admin/admin'))
+    construct.addRoutes([SECURE_MW, ALL_USERS_MW], '/api/admin', require('./routes/admin/admin'))
 
     // handle multipart requests
     app.use(multer({
@@ -65,7 +64,7 @@ module.exports = function (express, config) {
         }
     }).single('file'))
 
-    app.use('/api/upload', require('./routes/protected/upload')(app, express))
+    construct.addRoutes([SECURE_MW], '/api/upload', require('./routes/protected/upload'))
 
     return app
 }

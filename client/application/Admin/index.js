@@ -3,24 +3,14 @@ import {connect} from "react-redux"
 import {bindActionCreators} from "redux"
 import NavBar from "../../components/NavBar"
 import MessageBar from "../../components/MessageBar"
-
-import RrAction from "../../components/RrAction"
-
-import {
-    adminUsers,
-    updaterCategory,
-    updaterExpense,
-    updaterContact,
-    updaterImage,
-    updaterUserImage
-} from "../../actions/api"
+import {adminUsers} from "../../actions/api"
 
 import moment from "moment"
 
 class Admin extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.props.adminUsers()
         this._header = this._header.bind(this)
         this._body = this._body.bind(this)
@@ -40,7 +30,6 @@ class Admin extends React.Component {
                 cells: [
                     {value: user.email},
                     {value: user.name},
-                    {value: user.location},
                     {value: moment(user.created_at).format("DD MM YYYY")}
                 ]
             })
@@ -54,7 +43,7 @@ class Admin extends React.Component {
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div><h1>Hello My Master!</h1></div>
+                        <h1>Admin Panel</h1>
                     </div>
                     <div class="col-sm-12">
                         <hr />
@@ -63,18 +52,11 @@ class Admin extends React.Component {
                         <MessageBar />
                     </div>
                     <div class="col-sm-12">
-                        <RrAction action={updaterCategory} label="Update Categories" classes="btn btn-default"/>
-                        &nbsp;
-                        <RrAction action={updaterExpense} label="Update Expenses" classes="btn btn-default"/>
-                        &nbsp;
-                        <RrAction action={updaterContact} label="Update conatcts" classes="btn btn-default"/>
-                        &nbsp;
-                        <RrAction action={updaterImage} label="Update images" classes="btn btn-default"/>
-                        &nbsp;
-                        <RrAction action={updaterUserImage} label="Update user images" classes="btn btn-default"/>
+                        <h3>Users</h3>
                     </div>
                     <div class="col-sm-12">
-                        {/*<PagedTable header={this._header()} body={this._body()}/>*/}
+                        {JSON.stringify(this.props.admin.users)}
+                        {/*{<PagedTable header={this._header()} body={this._body()}/>}*/}
                     </div>
                     <div class="col-sm-12">
                         <br />

@@ -1,14 +1,14 @@
 var config = require('../../../config')
-var UserImage = require('../../models/userImage')
+var Image = require('../../models/image')
 var InPromise = require('../../util/inpromise.js')
 
 module.exports = function (app, express) {
-    var userImageRouter = express.Router()
+    var imageRouter = express.Router()
 
-    userImageRouter.get('/:imgId', function (req, res) {
+    imageRouter.get('/:imgId', function (req, res) {
         InPromise.mongo
             .findOne({
-                schema: UserImage,
+                schema: Image,
                 criteria: {_id: req.params.imgId},
                 orFail: true
             })
@@ -21,5 +21,5 @@ module.exports = function (app, express) {
             })
     })
 
-    return userImageRouter
+    return imageRouter
 }

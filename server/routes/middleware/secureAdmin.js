@@ -5,21 +5,18 @@ var config = require('../../../config')
 var superSecret = config.secret
 
 module.exports = function (app, express) {
-    var secAdminRouter = express.Router()
-
+    let secAdminRouter = express.Router()
     // route middleware to verify a token
     secAdminRouter.use(function (req, res, next) {
         // do logging
         // check header or url parameters or post parameters for token
-        var token = req.body.token || req.query.token || req.headers['authorization'];
+        let token = req.body.token || req.query.token || req.headers['authorization'];
         // decode token
         if (token) {
             // verifies secret and checks exp
             jwt.verify(token, superSecret, function (err, decoded) {
                 if (err) {
-                    res.status(403).send({
-                        message: 'Failed to authenticate token.'
-                    })
+                    res.status(403).send({message: 'Failed to authenticate token.'})
                 } else {
                     // if everything is good, save to request for use in other routes
                     req.decoded = decoded
@@ -29,11 +26,8 @@ module.exports = function (app, express) {
             })
         } else {
             // if no token return an HTTP response of 403 and an error message
-            res.status(403).send({
-                message: 'No token provided.'
-            })
+            res.status(403).send({message: 'No token provided.'})
         }
     })
-
     return secAdminRouter
 }

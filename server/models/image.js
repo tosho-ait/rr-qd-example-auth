@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
-var UserImageSchema = new Schema({
+var ImageSchema = new Schema({
     data: Buffer,
     contentType: String,
     originalName: String,
@@ -10,4 +10,4 @@ var UserImageSchema = new Schema({
     ownerId: String
 })
 
-module.exports = mongoose.model('UserImage', UserImageSchema)
+module.exports = mongoose.model('Image', ImageSchema)

@@ -56,9 +56,7 @@ module.exports = function (app, express) {
                 user.name = req.body.name
                 user.email = req.body.email
                 user.password = req.body.password
-                user.location = req.body.location
-                user.country = req.body.country
-                user.admin = false
+                user.admin = true
                 return user
             })
             .then(user => InPromise.mongo.save({entity: user, errorMessage: msg.USER_REGISTER_CANT_CREATE}))
