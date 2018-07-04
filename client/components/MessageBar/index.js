@@ -2,7 +2,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Modal} from 'react-bootstrap'
-import RrAction from "../RrAction"
+import {RrAction} from "rr-qd"
 
 import * as LABELS from '../../config/labels'
 

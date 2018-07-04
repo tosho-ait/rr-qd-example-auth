@@ -1,6 +1,6 @@
 import React from "react"
 import {reduxForm} from "redux-form"
-import RrAction from "../../components/RrAction"
+import {RrAction} from "rr-qd"
 import FormFieldError from "../../components/FormFieldError"
 import {loginSubmit} from "../../actions/api"
 import {routeDo} from "../../actions/app"
@@ -42,8 +42,7 @@ class LoginForm extends React.Component {
                         </div>
                         <div class="form-group fg-custom">
                             <div class="border-top">
-                                Don't have an account? <RrAction action={routeDo} values={["register"]}
-                                                                   label="Sign Up Here"/>
+                                Don't have an account? <RrAction action={routeDo} values={["register"]}>Sign Up Here</RrAction>
                             </div>
                         </div>
                     </form>

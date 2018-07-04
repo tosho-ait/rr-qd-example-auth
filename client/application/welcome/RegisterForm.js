@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import {reduxForm} from "redux-form"
 import {registerFormSubmit} from "../../actions/api"
-import RrAction from "../../components/RrAction"
+import {RrAction} from "rr-qd"
 import FormFieldError from "../../components/FormFieldError"
 import {routeDo} from "../../actions/app"
 
@@ -39,7 +39,7 @@ class RegisterForm extends Component {
                     </div>
                     <div class="form-group fg-custom">
                         <div class="border-top">
-                            <RrAction action={routeDo} values={[""]} classes="btn btn-warning" label="Back to Login"/>
+                            <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to Login</RrAction>
                             <button type="submit" disabled={submitting} class="btn btn-success pull-right">
                                 <span>Sign Up</span>
                             </button>

@@ -2,7 +2,7 @@ import React from "react"
 import NavBar from "../../components/NavBar"
 import WelcomeJumbo from "./WelcomeJumbo"
 import {connect} from "react-redux"
-import RrAction from "../../components/RrAction"
+import {RrAction} from "rr-qd"
 import {routeDo} from "../../actions/app"
 
 

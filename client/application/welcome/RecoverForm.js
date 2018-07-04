@@ -1,7 +1,7 @@
 import React from "react"
 import {reduxForm} from "redux-form"
 import {recoverFormSubmit} from "../../actions/api"
-import RrAction from "../../components/RrAction"
+import {RrAction} from "rr-qd"
 import {routeDo} from "../../actions/app"
 
 class RecoverForm extends React.Component {

@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import {reduxForm} from "redux-form"
 import {resetFormSubmit} from "../../actions/api"
-import RrAction from "../../components/RrAction"
+import {RrAction} from "rr-qd"
 import {routeDo} from "../../actions/app"
 
 

@@ -1,6 +1,6 @@
 import React from "react"
 import {connect} from "react-redux"
-import RrAction from "../RrAction"
+import {RrAction} from "rr-qd"
 import {Navbar, Nav, NavDropdown, MenuItem} from "react-bootstrap"
 import {routeDo, logoutDo} from "../../actions/app"
 
@@ -15,19 +15,17 @@ class NavBar extends React.Component {
                     <li><RrAction action={routeDo} values={["", {}]} label="Home" icon="list-alt"/></li>
                 </Nav>
                 <Nav pullRight>
-                    <li>
-                        <NavDropdown title={auth.userDetails.name} id="basic-nav-dropdown">
-                            <li><RrAction action={routeDo} values={["settings", {}]} label="user settings">
-                                <i class="glyphicon glyphicon-cog"/></RrAction></li>
-                            { auth.userDetails.admin &&
-                            <li><RrAction action={routeDo} values={["admin", {}]} label="admin panel">
-                                <i class="glyphicon glyphicon-king"/></RrAction>
-                            </li> }
-                            <MenuItem divider/>
-                            <li><RrAction action={logoutDo} label="logout">
-                                <i class="glyphicon glyphicon-log-out"/></RrAction></li>
-                        </NavDropdown>
-                    </li>
+                    <NavDropdown title={auth.userDetails.name} id="basic-nav-dropdown">
+                        <li><RrAction action={routeDo} values={["settings", {}]}>
+                            <i class="glyphicon glyphicon-cog"/> user settings</RrAction></li>
+                        { auth.userDetails.admin &&
+                        <li><RrAction action={routeDo} values={["admin", {}]}>
+                            <i class="glyphicon glyphicon-king"/> admin panel</RrAction>
+                        </li> }
+                        <MenuItem divider/>
+                        <li><RrAction action={logoutDo}>
+                            <i class="glyphicon glyphicon-log-out"/> logout</RrAction></li>
+                    </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
         }
@@ -35,7 +33,7 @@ class NavBar extends React.Component {
         return <Navbar inverse fixedTop>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="#">RR-QD EXAMPLE</a>
+                    <RrAction action={routeDo} values={["", {}]} classes="navbar-brand">RR-QD EXAMPLE</RrAction>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
