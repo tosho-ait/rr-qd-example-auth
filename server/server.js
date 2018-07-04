@@ -30,7 +30,6 @@ module.exports = function (express, config) {
     // MIDDLEWARE
     var SECURE_MW = construct.addMiddleware(require('./routes/middleware/secure'))
     var ALL_USERS_MW = construct.addMiddleware(require('./routes/middleware/usersMw'))
-    var LISTS_MW = construct.addMiddleware(require('./routes/middleware/listsMw'))
 
     // PUBLIC ROUTES
     construct.addRoutes([],
@@ -41,13 +40,6 @@ module.exports = function (express, config) {
 
     construct.addRoutes([],
         '/api/img', require('./routes/public/image'))
-
-    construct.addRoutes([LISTS_MW],
-        '/api/publiclists', require('./routes/public/lists'))
-
-    // PRIVATE ROUTES
-    construct.addRoutes([SECURE_MW, LISTS_MW],
-        '/api/lists', require('./routes/protected/lists'))
 
     construct.addRoutes([SECURE_MW],
         '/api/user', require('./routes/protected/user'))

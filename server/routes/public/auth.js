@@ -17,7 +17,7 @@ module.exports = function (app, express) {
     // register user route
     authRouter.post('/register', function (req, res) {
         InPromise
-            .valid2(validators.userRegister, req.body)
+            .valid(validators.userRegister, req.body)
             .then(() => {
                 var user = new User()
                 user.name = req.body.name
@@ -33,7 +33,7 @@ module.exports = function (app, express) {
     // route to authenticate a user
     authRouter.post('/authenticate', function (req, res) {
         InPromise
-            .valid2(validators.userAuth, req.body)
+            .valid(validators.userAuth, req.body)
             .then(() => InPromise.mongo
                 .findOne({
                     schema: User,

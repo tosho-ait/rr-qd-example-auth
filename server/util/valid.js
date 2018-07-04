@@ -1,4 +1,4 @@
-var valid2 = (schema, object, context) => {
+var valid = (schema, object, context) => {
     return new Promise((resolve, reject) => {
             var errors = {}
             var custom = []
@@ -84,4 +84,4 @@ var valid2 = (schema, object, context) => {
 
 }
 
-module.exports = valid2
+module.exports = valid
