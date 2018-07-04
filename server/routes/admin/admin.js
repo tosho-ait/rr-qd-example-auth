@@ -1,7 +1,6 @@
 var User = require('../../models/user')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
-var valid = require('../../util/valid.js')
 
 module.exports = function (app, express) {
     var adminRouter = express.Router()

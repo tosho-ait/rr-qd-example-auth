@@ -5,7 +5,8 @@ var crypto = require('crypto')
 var config = require('../../../config')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
-var valid = require('../../util/valid.js')
+var valid2 = require('../../util/valid2.js')
+var validators = require('../../validators/validators.js')
 var msg = require('../../res/msg')
 
 module.exports = function (app, express) {
@@ -37,13 +38,7 @@ module.exports = function (app, express) {
     // forgot password route
     recoverRouter.post('/forgot', function (req, res) {
         InPromise
-            .valid({
-                _error: 'Could not reset your password.',
-                email: {
-                    doCheckProperty: true,
-                    required: {_error: 'Please input an Email'},
-                }
-            }, req.body)
+            .valid2(validators.passwordRecover, req.body)
             .then(() => InPromise.wrap(crypto.randomBytes)(20))
             .then(buf => buf.toString('hex'))
             .then(token => InPromise.mongo

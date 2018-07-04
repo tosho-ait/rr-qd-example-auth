@@ -52,6 +52,9 @@ module.exports = function (express, config) {
     construct.addRoutes([SECURE_MW],
         '/api/user', require('./routes/protected/user'))
 
+    construct.addRoutes([SECURE_MW],
+        '/api/reauth', require('./routes/protected/reauth'))
+
     // Admin ROUTES
     // TODO to be secured
     construct.addRoutes([SECURE_MW, ALL_USERS_MW], '/api/admin', require('./routes/admin/admin'))

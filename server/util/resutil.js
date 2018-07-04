@@ -16,7 +16,7 @@ var resUtil = {
     },
     error: (res, overwriteMessage, fallbackMessage) => {
         return error => {
-            console.log(error)
+            //console.log(error)
             if (overwriteMessage) {
                 res.status(418).json({messages: {_error: overwriteMessage}})
             } else if (typeof error === 'string' || error instanceof String) {

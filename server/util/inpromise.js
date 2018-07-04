@@ -1,4 +1,3 @@
-var valid = require('./valid.js')
 var valid2 = require('./valid2.js')
 
 var InPromise = {
@@ -95,7 +94,6 @@ var InPromise = {
             })
         }
     },
-    valid: (criteria, target) => valid(criteria, target),
     valid2: (criteria, target) => valid2(criteria, target),
     if: (condition, onTrue, onFalse)=> {
         return new Promise((resolve, reject)=> {

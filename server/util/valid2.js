@@ -1,4 +1,4 @@
-var valid2 = (schema, object) => {
+var valid2 = (schema, object, context) => {
     return new Promise((resolve, reject) => {
             var errors = {}
             var custom = []
@@ -33,7 +33,7 @@ var valid2 = (schema, object) => {
                             var prop = property
                             custom.push(
                                 new Promise((resolve, reject) => {
-                                    Promise.resolve(check.custom(object))
+                                    Promise.resolve(check.custom(object, context))
                                         .then(passed => {
                                             if (!passed) {
                                                 if (check.fieldError) {
@@ -60,6 +60,7 @@ var valid2 = (schema, object) => {
                     }
                 })
             }
+
             resolve({errors, custom})
         }
     ).then(result => {

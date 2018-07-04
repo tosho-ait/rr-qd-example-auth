@@ -15,10 +15,10 @@ export const AP_LOAD_LIST = 'api/lists/get'
 export const AP_LOAD_LIST_PUBLIC = 'api/publiclists/get'
 
 // SECURITY API
-export const AP_AUTH_PING = 'api/user/ping'
+export const AP_AUTH_PING = 'api/reauth/ping'
 export const AP_AUTH_LOGIN = 'api/auth/authenticate'
 
-export const AP_AUTH_RELOGIN = 'api/user/refresh'
+export const AP_AUTH_RELOGIN = 'api/reauth/refresh'
 
 let {
     apiCall,
