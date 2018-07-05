@@ -24,8 +24,8 @@ class ResetForm extends Component {
                         </div>
                         <div class="form-group fg-custom">
                             <div class="border-top">
-                                <RrAction action={routeDo} values={[""]} classes="btn btn-warning"
-                                            label="Back to Login"/>
+                                <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to
+                                    Login</RrAction>
                                 <button type="submit" disabled={submitting} class="btn btn-success pull-right">
                                     <span>Reset</span>
                                 </button>
@@ -41,9 +41,6 @@ class ResetForm extends Component {
 export default reduxForm({
     form: 'reset',
     fields: ['email'],
-    onSubmit: (data, dispatch) => {
-        return new Promise(function (resolve, reject) {
-            dispatch(resetFormSubmit.action({data, reject, resolve}))
-        })
-    }
+    onSubmit: (data, dispatch) => new Promise((resolve, reject) =>
+        dispatch(resetFormSubmit.action({data, reject, resolve})))
 })(ResetForm)

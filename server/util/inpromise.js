@@ -94,7 +94,7 @@ var InPromise = {
             })
         }
     },
-    valid: (criteria, target) => valid(criteria, target),
+    valid: (criteria, target, context) => valid(criteria, target, context),
     if: (condition, onTrue, onFalse)=> {
         return new Promise((resolve, reject)=> {
             if (condition) {

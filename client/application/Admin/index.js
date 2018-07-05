@@ -2,7 +2,8 @@ import React from "react"
 import {connect} from "react-redux"
 import {bindActionCreators} from "redux"
 import NavBar from "../../components/NavBar"
-import MessageBar from "../../components/MessageBar"
+import MessageBar from "../../fancy/MessageBar"
+import PagedTable from "../../fancy/PagedTable"
 import {adminUsers} from "../../actions/api"
 
 import moment from "moment"
@@ -19,8 +20,7 @@ class Admin extends React.Component {
     _header() {
         return [[{title: 'email'},
             {title: 'name'},
-            {title: 'location'},
-            {title: 'date'}]]
+            {title: 'reg date'}]]
     }
 
     _body() {
@@ -55,8 +55,7 @@ class Admin extends React.Component {
                         <h3>Users</h3>
                     </div>
                     <div class="col-sm-12">
-                        {JSON.stringify(this.props.admin.users)}
-                        {/*{<PagedTable header={this._header()} body={this._body()}/>}*/}
+                        <PagedTable header={this._header()} body={this._body()}/>
                     </div>
                     <div class="col-sm-12">
                         <br />

@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import {reduxForm} from "redux-form"
 import {registerFormSubmit} from "../../actions/api"
 import {RrAction} from "rr-qd"
-import FormFieldError from "../../components/FormFieldError"
+import FormFieldError from "../../fancy/FormFieldError"
 import {routeDo} from "../../actions/app"
 
 class RegisterForm extends Component {
@@ -54,9 +54,6 @@ class RegisterForm extends Component {
 export default reduxForm({
     form: 'register',
     fields: ['name', 'password', 'passwordconfirm', 'email', 'location', 'country'],
-    onSubmit: (data, dispatch) => {
-        return new Promise(function (resolve, reject) {
-            dispatch(registerFormSubmit.action({data, reject, resolve}))
-        })
-    }
+    onSubmit: (data, dispatch) => new Promise((resolve, reject) =>
+        dispatch(registerFormSubmit.action({data, reject, resolve})))
 })(RegisterForm)

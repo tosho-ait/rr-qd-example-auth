@@ -47,6 +47,17 @@ module.exports = {
         .required("Please input an Email")
         .build(),
 
+    passwordReset: validator()
+        .generalError("Could not reset your password.")
+        .target("password")
+        .required("Please input a Password")
+        .minLength(8, "Password must be at least 8 characters")
+        .maxLength(25, "Password must be no more than 25 characters")
+        .target("passwordconfirm")
+        .required("Please repeat your Password")
+        .custom(object => !object.password || object.password === object.passwordconfirm, 'Passwords do not match')
+        .build(),
+
     userAuth: validator()
         .target("email")
         .generalError("Incorrect Email or Password")

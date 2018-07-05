@@ -34,10 +34,7 @@ class LayoutWelcomeDone extends React.Component {
                                 </div>
                                 <div class="form-group fg-custom">
                                     <div class="border-top">
-                                        <RrAction action={routeDo}
-                                                    values={[""]}
-                                                    classes="btn btn-warning"
-                                                    label="Back to Login"/>
+                                        <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to Login</RrAction>
                                     </div>
                                 </div>
                             </div>

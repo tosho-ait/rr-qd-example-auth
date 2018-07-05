@@ -20,7 +20,7 @@ class InfoInForm extends React.Component {
                     <div class="form-group fg-custom">
                         <div class="border-top">
                             <RrAction action={routeDo} values={[""]} classes="btn btn-warning"
-                                        label="Back to Login"/>
+                                      label="Back to Login"/>
                         </div>
                     </div>
                 </div>

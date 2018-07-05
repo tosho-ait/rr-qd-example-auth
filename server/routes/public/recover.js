@@ -5,7 +5,6 @@ var crypto = require('crypto')
 var config = require('../../../config')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
-var valid = require('../../util/valid.js')
 var validators = require('../../validators/validators.js')
 var msg = require('../../res/msg')
 
@@ -23,8 +22,8 @@ module.exports = function (app, express) {
                 },
                 errorMessage: 'Password reset link is invalid or has expired'
             })
+            .then(user => InPromise.valid(validators.passwordReset, req.body).then(() => user))
             .then(user => {
-                // TODO verify password strength
                 user.password = req.body.password
                 user.resetPasswordToken = undefined
                 user.resetPasswordExpires = undefined

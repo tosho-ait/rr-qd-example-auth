@@ -2,6 +2,7 @@ import React from "react"
 import {reduxForm} from "redux-form"
 import {recoverFormSubmit} from "../../actions/api"
 import {RrAction} from "rr-qd"
+import FormFieldError from "../../fancy/FormFieldError"
 import {routeDo} from "../../actions/app"
 
 class RecoverForm extends React.Component {
@@ -19,19 +20,18 @@ class RecoverForm extends React.Component {
                             <div class="form-group fg-custom">
                                 <label>Password</label>
                                 <input class="form-control" type="password" {...password}/>
-                                {password.touched && password.error && <div>{password.error}</div>}
+                                <FormFieldError field={password}/>
                             </div>
                             <div class="form-group fg-custom">
                                 <label>Confirm Password</label>
                                 <input class="form-control" type="password" {...passwordconfirm} />
-                                {passwordconfirm.touched && passwordconfirm.error &&
-                                <div>{passwordconfirm.error}</div>}
+                                <FormFieldError field={passwordconfirm}/>
                             </div>
                         </div>
                         <div class="form-group fg-custom">
                             <div class="border-top">
-                                <RrAction action={routeDo} values={[""]} classes="btn btn-warning"
-                                            label="Back to Login"/>
+                                <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to
+                                    Login</RrAction>
                                 <button type="submit" disabled={submitting} class="btn btn-success pull-right">
                                     <span>Reset Password</span>
                                 </button>
@@ -47,11 +47,8 @@ class RecoverForm extends React.Component {
 export default  reduxForm({
         form: 'recover',
         fields: ['token', 'password', 'passwordconfirm'],
-        onSubmit: (data, dispatch) => {
-            return new Promise(function (resolve, reject) {
-                dispatch(recoverFormSubmit.action({data, reject, resolve}));
-            })
-        }
+        onSubmit: (data, dispatch) => new Promise((resolve, reject) =>
+            dispatch(recoverFormSubmit.action({data, reject, resolve})))
     },
     state => ({initialValues: {token: (state.router.publicprops.token) ? state.router.publicprops.token : 'none'}})
 )(RecoverForm)

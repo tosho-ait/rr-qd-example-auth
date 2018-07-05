@@ -13,7 +13,9 @@ class MessageBar extends React.Component {
 
     render() {
         let content = ""
+
         let inModal = this.props.inModal
+
         let inModalError = this.props.inModalError
 
         let msgClearMessage = this.props.msgClearMessage

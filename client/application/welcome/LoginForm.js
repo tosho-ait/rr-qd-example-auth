@@ -1,7 +1,7 @@
 import React from "react"
 import {reduxForm} from "redux-form"
 import {RrAction} from "rr-qd"
-import FormFieldError from "../../components/FormFieldError"
+import FormFieldError from "../../fancy/FormFieldError"
 import {loginSubmit} from "../../actions/api"
 import {routeDo} from "../../actions/app"
 
@@ -42,7 +42,8 @@ class LoginForm extends React.Component {
                         </div>
                         <div class="form-group fg-custom">
                             <div class="border-top">
-                                Don't have an account? <RrAction action={routeDo} values={["register"]}>Sign Up Here</RrAction>
+                                Don't have an account? <RrAction action={routeDo} values={["register"]}>Sign Up
+                                Here</RrAction>
                             </div>
                         </div>
                     </form>
@@ -55,9 +56,6 @@ class LoginForm extends React.Component {
 export default reduxForm({
     form: 'login',
     fields: ['password', 'email'],
-    onSubmit: (data, dispatch) => {
-        return new Promise(function (resolve, reject) {
-            dispatch(loginSubmit.action({data, reject, resolve}))
-        })
-    }
+    onSubmit: (data, dispatch) => new Promise((resolve, reject) =>
+        dispatch(loginSubmit.action({data, reject, resolve})))
 })(LoginForm)

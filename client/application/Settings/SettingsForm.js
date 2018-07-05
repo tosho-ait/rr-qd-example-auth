@@ -1,8 +1,8 @@
 import React from "react"
 import {reduxForm} from "redux-form"
 
-import FormFieldError from "../../components/FormFieldError"
-import MessageBar from "../../components/MessageBar"
+import FormFieldError from "../../fancy/FormFieldError"
+import MessageBar from "../../fancy/MessageBar"
 
 import {updateMe, uploadUserImage, reLoginSubmit} from "../../actions/api"
 import {bindActionCreators} from "redux"
@@ -144,14 +144,11 @@ class SettingsForm extends React.Component {
 export default reduxForm({
         form: 'settings',
         fields: ['email', 'name', 'password', 'passwordconfirm', 'oldpassword', 'location', 'country', 'image'],
-        onSubmit: (data, dispatch) => {
-            return new Promise(function (resolve, reject) {
-                dispatch(updateMe.action({data, reject, resolve}))
-            }).then(() => {
+        onSubmit: (data, dispatch) => new Promise((resolve, reject) =>
+            dispatch(updateMe.action({data, reject, resolve})))
+            .then(() =>
                 // refresh user details
-                dispatch(reLoginSubmit.action({}))
-            })
-        }
+                dispatch(reLoginSubmit.action({})))
     },
     state => ({initialValues: state.auth.userDetails, token: state.auth.token, tmpImage: state.user.image}),
     dispatch => bindActionCreators({uploadUserImage: uploadUserImage.action}, dispatch)

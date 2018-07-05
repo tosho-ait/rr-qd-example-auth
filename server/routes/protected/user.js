@@ -15,7 +15,7 @@ module.exports = function (app, express) {
                 errorMessage: 'Could not update your Account',
                 orFail: true
             })
-            .then(user => valid(validators.userUpdate, req.body, {user}).then(() => user))
+            .then(user => InPromise.valid(validators.userUpdate, req.body, {user}).then(() => user))
             .then(user => {
                 user.name = req.body.name
                 if (req.body.password) {
