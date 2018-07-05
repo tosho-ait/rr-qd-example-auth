@@ -20,6 +20,7 @@ module.exports = function (app, express) {
                     resetPasswordToken: req.body.token,
                     resetPasswordExpires: {$gt: Date.now()},
                 },
+                orFail: true,
                 errorMessage: 'Password reset link is invalid or has expired'
             })
             .then(user => InPromise.valid(validators.passwordReset, req.body).then(() => user))
@@ -56,24 +57,17 @@ module.exports = function (app, express) {
             .then(pair => InPromise.mongo
                 .save({entity: pair.user})
                 .then(() => pair))
-            .then(pair => {
-                var smtpTransport = nodemailer.createTransport({
-                    service: config.mailservice,
-                    auth: {
-                        user: config.mailuser,
-                        pass: config.mailpass
-                    }
-                })
-                return InPromise
-                    .wrap(smtpTransport.sendMail, smtpTransport)({
-                        to: req.body.email,
-                        subject: 'Confirm Password Reset',
-                        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your budgetsimply.io account.\n\n' +
-                        'Please click on the following link to complete the reset:\n\n' +
-                        'http://budgetsimply.io/#recover?token=' + pair.token + '\n\n' +
-                        'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-                    })
-            })
+            .then(pair => InPromise.util.sendmail({
+                service: config.mailservice,
+                user: config.mailuser,
+                pass: config.mailpass,
+                to: req.body.email,
+                subject: 'Confirm Password Reset',
+                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your budgetsimply.io account.\n\n' +
+                'Please click on the following link to complete the reset:\n\n' +
+                'http://budgetsimply.io/#recover?token=' + pair.token + '\n\n' +
+                'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            }))
             .then(resUtil.successNoPayload(res, 'An e-mail has been sent to ' + req.body.email + ' with further instructions.'))
             .catch(resUtil.error(res, null, "Could not reset your password."))
     })

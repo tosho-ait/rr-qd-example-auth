@@ -1,6 +1,41 @@
 var valid = require('./valid.js')
+var nodemailer = require('nodemailer')
 
 var InPromise = {
+    wrap: (fn, thisArg) => {
+        return function () {
+            var args = [].slice.call(arguments)
+            return new Promise((resolve, reject) => {
+                fn.apply(thisArg, args.concat((err, v) => {
+                        if (err) {
+                            reject(err)
+                        } else {
+                            resolve(v)
+                        }
+                    })
+                )
+            })
+        }
+    },
+    valid: (criteria, target, context) => valid(criteria, target, context),
+    if: (condition, onTrue, onFalse)=> {
+        return new Promise((resolve, reject)=> {
+            if (condition) {
+                resolve(onTrue)
+            } else {
+                reject(onFalse)
+            }
+        })
+    },
+    do: (func)=> {
+        return new Promise((resolve, reject)=> {
+            try {
+                resolve(func())
+            } catch (error) {
+                reject(error)
+            }
+        })
+    },
     mongo: {
         findOne: ({schema, criteria, errorMessage, limit, lean, orFail, select}) => {
             return new Promise((resolve, reject) => {
@@ -79,39 +114,11 @@ var InPromise = {
             })
         },
     },
-    wrap: (fn, thisArg) => {
-        return function () {
-            var args = [].slice.call(arguments)
-            return new Promise((resolve, reject) => {
-                fn.apply(thisArg, args.concat((err, v) => {
-                        if (err) {
-                            reject(err)
-                        } else {
-                            resolve(v)
-                        }
-                    })
-                )
-            })
+    util: {
+        sendmail: ({service, user, pass, to, subject, text}) => {
+            let smtpTransport = nodemailer.createTransport({service, auth: {user, pass}})
+            return InPromise.wrap(smtpTransport.sendMail, smtpTransport)({to, subject, text})
         }
-    },
-    valid: (criteria, target, context) => valid(criteria, target, context),
-    if: (condition, onTrue, onFalse)=> {
-        return new Promise((resolve, reject)=> {
-            if (condition) {
-                resolve(onTrue)
-            } else {
-                reject(onFalse)
-            }
-        })
-    },
-    do: (func)=> {
-        return new Promise((resolve, reject)=> {
-            try {
-                resolve(func())
-            } catch (error) {
-                reject(error)
-            }
-        })
     }
 }
 

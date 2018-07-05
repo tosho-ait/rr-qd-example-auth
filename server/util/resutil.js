@@ -29,6 +29,7 @@ var resUtil = {
             } else if (fallbackMessage) {
                 res.status(418).json({messages: {_error: fallbackMessage}})
             } else {
+                console.log(error)
                 res.status(418).json({messages: {_error: "Ooops..."}})
             }
         }
