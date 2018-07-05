@@ -2,8 +2,8 @@ import React, {Component} from "react"
 import {reduxForm} from "redux-form"
 import {resetFormSubmit} from "../../actions/api"
 import {RrAction} from "rr-qd"
+import FormFieldError from "../../fancy/FormFieldError"
 import {routeDo} from "../../actions/app"
-
 
 class ResetForm extends Component {
     render() {
@@ -20,6 +20,7 @@ class ResetForm extends Component {
                             <div class="fg-custom form-group">
                                 <label>E-mail</label>
                                 <input class="form-control" type="email" {...email} placeholder="email"/>
+                                <FormFieldError field={email}/>
                             </div>
                         </div>
                         <div class="form-group fg-custom">

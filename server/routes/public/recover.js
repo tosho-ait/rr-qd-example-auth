@@ -75,7 +75,7 @@ module.exports = function (app, express) {
                     })
             })
             .then(resUtil.successNoPayload(res, 'An e-mail has been sent to ' + req.body.email + ' with further instructions.'))
-            .catch(resUtil.error(res, "Could not reset your password."))
+            .catch(resUtil.error(res, null, "Could not reset your password."))
     })
 
     return recoverRouter
