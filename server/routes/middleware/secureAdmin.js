@@ -6,6 +6,7 @@ var superSecret = config.secret
 
 module.exports = function (app, express) {
     let secAdminRouter = express.Router()
+
     // route middleware to verify a token
     secAdminRouter.use(function (req, res, next) {
         // do logging
@@ -29,5 +30,6 @@ module.exports = function (app, express) {
             res.status(403).send({message: 'No token provided.'})
         }
     })
+
     return secAdminRouter
 }

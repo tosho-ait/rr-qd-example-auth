@@ -4,7 +4,7 @@ var resUtil = require('../../util/resutil.js')
 var sharp = require('sharp')
 
 module.exports = function (app, express) {
-    var uploadRouter = express.Router()
+    let uploadRouter = express.Router()
 
     uploadRouter.post('/userimg', function (req, res) {
         InPromise
@@ -24,7 +24,6 @@ module.exports = function (app, express) {
                 data: buffer,
                 contentType: req.file.mimetype,
                 originalName: req.file.originalname,
-                owner: req.decoded.user.email,
                 ownerId: req.decoded.user._id,
             }))
             .then(img => InPromise.mongo.save({entity: new Image(img)}))

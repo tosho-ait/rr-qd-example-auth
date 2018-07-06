@@ -3,7 +3,7 @@ var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
 
 module.exports = function (app, express) {
-    var adminRouter = express.Router()
+    let adminRouter = express.Router()
 
     adminRouter.get('/users', function (req, res) {
         InPromise.mongo

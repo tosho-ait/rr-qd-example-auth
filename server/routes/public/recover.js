@@ -9,7 +9,7 @@ var validators = require('../../validators/validators.js')
 var msg = require('../../res/msg')
 
 module.exports = function (app, express) {
-    var recoverRouter = express.Router()
+    let recoverRouter = express.Router()
 
     // reset password route
     recoverRouter.post('/reset', function (req, res) {

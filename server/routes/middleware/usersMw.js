@@ -1,7 +1,7 @@
 var User = require('../../models/user')
 
 module.exports = function (app, express) {
-    var usersMw = express.Router()
+    let usersMw = express.Router()
 
     usersMw.use(function (req, res, next) {
         User.find({}, function (err, all) {

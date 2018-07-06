@@ -1,4 +1,5 @@
 var User = require('../../models/user')
+var Login = require('../../models/login')
 var jwt = require('jsonwebtoken')
 var nodemailer = require('nodemailer')
 var crypto = require('crypto')
@@ -6,30 +7,31 @@ var config = require('../../../config')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
 var validators = require('../../validators/validators.js')
-var msg = require('../../res/msg')
 
 // super secret for creating tokens
 var superSecret = config.secret
 var tokenDuration = 1440 * 60 * 15
 
 module.exports = function (app, express) {
-    var authRouter = express.Router()
+    let authRouter = express.Router()
+
     // register user route
     authRouter.post('/register', function (req, res) {
         InPromise
             .valid(validators.userRegister, req.body)
             .then(() => {
-                var user = new User()
+                let user = new User()
                 user.name = req.body.name
                 user.email = req.body.email
                 user.password = req.body.password
                 user.admin = true
                 return user
             })
-            .then(user => InPromise.mongo.save({entity: user, errorMessage: msg.USER_REGISTER_CANT_CREATE}))
-            .then(resUtil.successNoPayload(res, msg.USER_REGISTER_REGISTER_DONE))
+            .then(user => InPromise.mongo.save({entity: user, errorMessage: "Could not create user"}))
+            .then(resUtil.successNoPayload(res, "New account registered"))
             .catch(resUtil.error(res))
     })
+
     // route to authenticate a user
     authRouter.post('/authenticate', function (req, res) {
         InPromise
@@ -54,8 +56,21 @@ module.exports = function (app, express) {
                 userDetails,
                 token: jwt.sign({userDetails}, superSecret, {expiresIn: tokenDuration})
             }))
+            .then(response => InPromise
+                .do(()=> {
+                    let login = new Login()
+                    login.ownerId = response.userDetails._id
+                    login.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+                    login.agent = req.headers['user-agent']
+                    login.token = response.token
+                    return login
+                })
+                .then(login => InPromise.mongo.save({entity: login, errorMessage: "Could not login"}))
+                .then(() => response)
+            )
             .then(resUtil.respond(res))
             .catch(resUtil.error(res, null, "Incorrect Email or Password"))
     })
+
     return authRouter
 }

@@ -3,7 +3,7 @@ var Image = require('../../models/image')
 var InPromise = require('../../util/inpromise.js')
 
 module.exports = function (app, express) {
-    var imageRouter = express.Router()
+    let imageRouter = express.Router()
 
     imageRouter.get('/:imgId', function (req, res) {
         InPromise.mongo

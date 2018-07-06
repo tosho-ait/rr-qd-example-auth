@@ -26,10 +26,10 @@ var UserSchema = new Schema({
     updated_at: Date,
     resetPasswordToken: String,
     resetPasswordExpires: Date
-});
+})
 
 UserSchema.pre('save', function (next) {
-    var user = this
+    let user = this
     user.updated_at = new Date()
     if (!user.created_at) {
         user.created_at = new Date()
@@ -47,7 +47,7 @@ UserSchema.pre('save', function (next) {
 })
 
 UserSchema.methods.comparePassword = function (password) {
-    var user = this;
+    let user = this
     return bcrypt.compareSync(password, user.password)
 }
 

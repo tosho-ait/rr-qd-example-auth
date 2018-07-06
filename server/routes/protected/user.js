@@ -6,7 +6,8 @@ var config = require('../../../config')
 var validators = require('../../validators/validators.js')
 
 module.exports = function (app, express) {
-    var userRouter = express.Router()
+    let userRouter = express.Router()
+
     userRouter.post('/update', function (req, res) {
         InPromise.mongo
             .findOne({
@@ -28,5 +29,6 @@ module.exports = function (app, express) {
             .then(resUtil.successNoPayload(res, 'Account updated'))
             .catch(resUtil.error(res))
     })
+
     return userRouter
 }
