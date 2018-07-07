@@ -4,36 +4,50 @@ import {bindActionCreators} from "redux"
 import NavBar from "../../components/NavBar"
 import MessageBar from "../../fancy/MessageBar"
 import PagedTable from "../../fancy/PagedTable"
-import {adminUsers} from "../../actions/api"
+import {RrAction} from "rr-qd"
+import Stale from "../../fancy/Stale"
+import {adminUsers, adminActivateUser, adminDeactivateUser} from "../../actions/api"
 import moment from "moment"
 
 class Admin extends React.Component {
 
     constructor(props) {
         super(props)
-        this.props.adminUsers()
         this._header = this._header.bind(this)
         this._body = this._body.bind(this)
     }
 
     _header() {
-        return [[{title: 'email'},
+        return [[
+            {title: 'email'},
             {title: 'name'},
-            {title: 'reg date'}]]
+            {title: 'reg date'},
+            {title: 'active'}]]
     }
 
     _body() {
         let body = []
         this.props.admin.users.map(user => {
             body.push({
-                childRows: [{cells: [{colSpan: 3}]}],
+                childRows: [{cells: [{colSpan: 4, classes: "text-right", value:
+                <div>
+                    <RrAction action={adminActivateUser}
+                              values={[{data:{userId: user._id}}]}
+                              classes="btn btn-default btn-xs">Activate</RrAction>&nbsp;
+                    <RrAction action={adminDeactivateUser}
+                              values={[{data:{userId: user._id}}]}
+                              classes="btn btn-default btn-xs">Deactivate</RrAction>
+                </div>
+                }]}],
                 onExpand: (row) => {
                     console.log(row)
                 },
                 cells: [
                     {value: user.email},
                     {value: user.name},
-                    {value: moment(user.created_at).format("DD MM YYYY")}
+                    {value: moment(user.created_at).format("DD MM YYYY")},
+                    {value: user.active ? "yes" :"no"},
+
                 ]
             })
         })
@@ -42,6 +56,7 @@ class Admin extends React.Component {
 
     render() {
         return <div>
+            <Stale target={adminUsers} callOnInit/>
             <NavBar />
             <div class="container">
                 <div class="row">

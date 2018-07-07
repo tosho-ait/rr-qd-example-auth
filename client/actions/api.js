@@ -153,7 +153,22 @@ export let adminUsers = apiCall({
     name: "adminUsers",
     endpoint: API_ADMIN_USERS,
     method: GET,
+    trackRequest: true,
     error: {logoutOn403}
+})
+
+export let adminActivateUser = apiCall({
+    name: "adminActivateUser",
+    endpoint: "api/admin/activateUser",
+    method: POST,
+    response: {showMessage, trackStaleUp: adminUsers.name},
+})
+
+export let adminDeactivateUser = apiCall({
+    name: "adminDeactivateUser",
+    endpoint: "api/admin/deactivateUser",
+    method: POST,
+    response: {showMessage, trackStaleUp: adminUsers.name},
 })
 
 export let uploadUserImage = apiCall({
