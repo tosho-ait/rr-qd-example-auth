@@ -4,6 +4,8 @@ export const API_REGISTERFORM = 'api/auth/register'
 export const API_RECOVERFORM = 'api/recover/reset'
 export const API_RESETFORM = 'api/recover/forgot'
 
+export const API_CONFIRMEMAIL = 'api/auth/confirm'
+
 export const API_UPDATE_ME = 'api/user/update'
 export const API_UPLOADUI = 'api/upload/userimg'
 
@@ -127,6 +129,13 @@ export let recoverFormSubmit = apiCall({
 export let resetFormSubmit = apiCall({
     name: "resetFormSubmit",
     endpoint: API_RESETFORM,
+    method: POST,
+    response: {showMessage, setPublic: 'done'},
+})
+
+export let confirmEmailSubmit = apiCall({
+    name: "confirmEmailSubmit",
+    endpoint: API_CONFIRMEMAIL,
     method: POST,
     response: {showMessage, setPublic: 'done'},
 })

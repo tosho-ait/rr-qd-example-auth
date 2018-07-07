@@ -5,6 +5,7 @@ import LayoutWelcome from "./welcome/LayoutWelcome"
 import LayoutWelcomeReg from "./welcome/LayoutWelcomeReg"
 import LayoutWelcomeRst from "./welcome/LayoutWelcomeRst"
 import LayoutWelcomeRecover from "./welcome/LayoutWelcomeRecover"
+import LayoutWelcomeConfirm from "./welcome/LayoutWelcomeConfirm"
 import LayoutWelcomeDone from "./welcome/LayoutWelcomeDone"
 import Home from "./Home"
 import Admin from "./Admin"
@@ -78,6 +79,9 @@ class Application extends React.Component {
                                     </RrRoute>
                                     <RrRoute routeMatches={["recover"]}>
                                         <LayoutWelcomeRecover />
+                                    </RrRoute>
+                                    <RrRoute routeMatches={["confirm"]}>
+                                        <LayoutWelcomeConfirm />
                                     </RrRoute>
                                     <RrRoute routeMatches={["done"]}>
                                         <LayoutWelcomeDone />

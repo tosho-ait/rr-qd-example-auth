@@ -5,7 +5,6 @@ import NavBar from "../../components/NavBar"
 import MessageBar from "../../fancy/MessageBar"
 import PagedTable from "../../fancy/PagedTable"
 import {adminUsers} from "../../actions/api"
-
 import moment from "moment"
 
 class Admin extends React.Component {
@@ -27,6 +26,10 @@ class Admin extends React.Component {
         let body = []
         this.props.admin.users.map(user => {
             body.push({
+                childRows: [{cells: [{colSpan: 3}]}],
+                onExpand: (row) => {
+                    console.log(row)
+                },
                 cells: [
                     {value: user.email},
                     {value: user.name},
@@ -55,7 +58,7 @@ class Admin extends React.Component {
                         <h3>Users</h3>
                     </div>
                     <div class="col-sm-12">
-                        <PagedTable header={this._header()} body={this._body()}/>
+                        <PagedTable expandable header={this._header()} body={this._body()}/>
                     </div>
                     <div class="col-sm-12">
                         <br />
