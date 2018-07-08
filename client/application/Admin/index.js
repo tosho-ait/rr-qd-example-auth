@@ -40,7 +40,7 @@ class Admin extends React.Component {
                 </div>
                 }]}],
                 onExpand: (row) => {
-                    console.log(row)
+
                 },
                 cells: [
                     {value: user.email},
