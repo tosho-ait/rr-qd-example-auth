@@ -20,6 +20,9 @@ var UserSchema = new Schema({
         required: [true],
         select: false
     },
+    active: Boolean,
+    mailVerified: Boolean,
+    mailVerifyToken: String,
     image: String,
     admin: Boolean,
     created_at: Date,

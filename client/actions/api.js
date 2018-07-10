@@ -4,6 +4,8 @@ export const API_REGISTERFORM = 'api/auth/register'
 export const API_RECOVERFORM = 'api/recover/reset'
 export const API_RESETFORM = 'api/recover/forgot'
 
+export const API_CONFIRMEMAIL = 'api/auth/confirm'
+
 export const API_UPDATE_ME = 'api/user/update'
 export const API_UPLOADUI = 'api/upload/userimg'
 
@@ -131,6 +133,13 @@ export let resetFormSubmit = apiCall({
     response: {showMessage, setPublic: 'done'},
 })
 
+export let confirmEmailSubmit = apiCall({
+    name: "confirmEmailSubmit",
+    endpoint: API_CONFIRMEMAIL,
+    method: POST,
+    response: {showMessage, setPublic: 'done'},
+})
+
 export let updateMe = apiCall({
     name: "updateMe",
     endpoint: API_UPDATE_ME,
@@ -144,7 +153,22 @@ export let adminUsers = apiCall({
     name: "adminUsers",
     endpoint: API_ADMIN_USERS,
     method: GET,
+    trackRequest: true,
     error: {logoutOn403}
+})
+
+export let adminActivateUser = apiCall({
+    name: "adminActivateUser",
+    endpoint: "api/admin/activateUser",
+    method: POST,
+    response: {showMessage, trackStaleUp: adminUsers.name},
+})
+
+export let adminDeactivateUser = apiCall({
+    name: "adminDeactivateUser",
+    endpoint: "api/admin/deactivateUser",
+    method: POST,
+    response: {showMessage, trackStaleUp: adminUsers.name},
 })
 
 export let uploadUserImage = apiCall({

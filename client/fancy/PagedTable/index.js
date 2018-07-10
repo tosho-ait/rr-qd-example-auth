@@ -1,9 +1,7 @@
-import React from 'react'
-
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './index.css'
-
-import {LBL_FT_NEXT, LBL_FT_PREV} from '../../config/labels'
+import React from "react"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./index.css"
+import {LBL_FT_NEXT, LBL_FT_PREV} from "../../config/labels"
 
 class PagedTable extends React.Component {
 
@@ -173,13 +171,18 @@ class PagedTable extends React.Component {
                                 subContentButton = <span onClick={() => this._toggle(displayedRow)}>&nbsp;<span
                                     class="glyphicon glyphicon-chevron-down"/>&nbsp;&nbsp;</span>
                             } else {
-                                subContentButton = <span onClick={() => this._toggle(displayedRow)}>&nbsp;<span
-                                    class="glyphicon glyphicon-chevron-right"/>&nbsp;&nbsp;</span>
+                                subContentButton = <span onClick={() => {
+                                    this._toggle(displayedRow)
+                                    if (row.onExpand) {
+                                        row.onExpand(row)
+                                    }
+                                }}>&nbsp;
+                                    <span class="glyphicon glyphicon-chevron-right"/>&nbsp;&nbsp;</span>
                             }
                         } else {
                             subContentButton =
-                                <span>&nbsp;<span
-                                    class="glyphicon glyphicon-chevron-right text-muted"/>&nbsp;&nbsp;</span>
+                                <span>&nbsp;
+                                    <span class="glyphicon glyphicon-chevron-right text-muted"/>&nbsp;&nbsp;</span>
                         }
                     }
                 }
