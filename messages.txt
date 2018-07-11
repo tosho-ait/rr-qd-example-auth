@@ -1,15 +1,15 @@
 TWITTER
 Please enter a valid email.
 Your password must be at least 6 characters.
-This email is
+This email is already taken.
 
 
 GOOGLE
 Please use between 6 and 30 characters.
 Those passwords don't match. Try again.
-Enter first name
-Enter last name
-Enter a password
+Enter first name.
+Enter last name.
+Enter a password.
 
 
 OTHER
