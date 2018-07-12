@@ -1,6 +1,8 @@
 var config = require('../../../config')
 var Image = require('../../models/image')
 var InPromise = require('../../util/inpromise.js')
+var msg = require('../../res/msg')
+
 
 module.exports = function (app, express) {
     let imageRouter = express.Router()
@@ -17,7 +19,7 @@ module.exports = function (app, express) {
                 res.end(image.data, 'binary')
             })
             .catch(() => {
-                res.status(404).end("image not found")
+                res.status(404).end(msg.IMAGE_NOT_FOUND)
             })
     })
 

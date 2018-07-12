@@ -1,14 +1,29 @@
 module.exports = {
 
-    LOGIN_FAILED: 'Incorrect email or password.',
+    LOGIN_FAILED: "Incorrect email or password.",
+    LOGIN_FAILED_ERROR: "Login failed.",
+    LOGIN_INACTIVE: "Your account is not active.",
 
     USER_REGISTER_FAILED: "Could not create user.",
     USER_REGISTER_DONE: "New account registered.",
 
-    USER_RESET_DONE: '--',
+    USER_RESET_DONE: "New account registered.",
+    USER_RESET_DONE_CONFIRMMAIL: "New account registered. Please check your mailbox to confirm your email.",
     USER_RESET_FAILED: "Could not reset password.",
 
+    USER_CONFIRMMAIL_DONE: "Thank you for confirming your email",
+    USER_CONFIRMMAIL_FAILED: "Email confirmation failed.",
+
+    LOGIN_RESET_EXPIRED: "Password reset link is invalid or has expired.",
+    LOGIN_RESET_FAILED: "Could not reset your password.",
+    LOGIN_RESET_DONE: "Your password has been successfully updated.",
+
+    LOGIN_RESET_NOEMAIL: "No account with this email address exists.",
+    LOGIN_RESET_MAILSENT: "We sent you a password reset link. Please check your mailbox.",
+
+
     USER_UPDATE_FAILED: "Could not update account.",
+    USER_UPDATE_DONE: "Account updated.",
 
 
     EMAIL_REQUIRED: "Enter an email.",
@@ -26,6 +41,9 @@ module.exports = {
     PASS_NOMATCH: "Password is not correct.",
 
     PASSCONFIRM_NOMATCH: "Passwords do not match.",
+
+    IMAGE_SAVED:  "Image saved.",
+    IMAGE_NOT_FOUND:  "Image not found."
 
 
 }

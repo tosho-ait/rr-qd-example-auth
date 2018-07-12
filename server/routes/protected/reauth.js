@@ -3,10 +3,12 @@ var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
 var config = require('../../../config')
 var jwt = require('jsonwebtoken')
+var msg = require('../../res/msg')
 
 // super secret for creating tokens
 var superSecret = config.secret
-var tokenDuration = 1440 * 60 * 15
+var tokenDuration = config.tokenDuration
+
 
 module.exports = function (app, express) {
     let userRouter = express.Router()
@@ -26,7 +28,7 @@ module.exports = function (app, express) {
                 schema: User,
                 criteria: {_id: req.decoded.user._id},
                 select: 'name email password admin country location image',
-                errorMessage: "Could not login",
+                errorMessage: msg.LOGIN_FAILED_ERROR,
                 orFail: true
             })
             .then(user => ({
@@ -41,7 +43,7 @@ module.exports = function (app, express) {
                 token: jwt.sign({userDetails}, superSecret, {expiresIn: tokenDuration})
             }))
             .then(resUtil.respond(res))
-            .catch(resUtil.error(res, null, "Could not login"))
+            .catch(resUtil.error(res, null, msg.LOGIN_FAILED_ERROR))
     })
 
     return userRouter

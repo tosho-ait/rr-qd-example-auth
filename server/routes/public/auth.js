@@ -7,10 +7,12 @@ var config = require('../../../config')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
 var validators = require('../../validators/validators.js')
+var msg = require('../../res/msg')
 
 // super secret for creating tokens
 var superSecret = config.secret
-var tokenDuration = 1440 * 60 * 15
+var tokenDuration = config.tokenDuration
+
 
 module.exports = function (app, express) {
     let authRouter = express.Router()
@@ -50,10 +52,10 @@ module.exports = function (app, express) {
                     return user
                 }
             })
-            .then(user => InPromise.mongo.save({entity: user, errorMessage: "Could not create user"}))
+            .then(user => InPromise.mongo.save({entity: user, errorMessage: msg.USER_REGISTER_FAILED}))
             .then(resUtil.successNoPayload(res, config.userVerifyMailOnRegister
-                ? "New account registered. Please check your mailbox to confirm your Email."
-                : "New account registered"))
+                ? msg.USER_RESET_DONE_CONFIRMMAIL
+                : msg.USER_REGISTER_DONE ))
             .catch(resUtil.error(res))
     })
 
@@ -66,15 +68,15 @@ module.exports = function (app, express) {
                     mailVerifyToken: req.body.token,
                 },
                 orFail: true,
-                errorMessage: 'Could not confirm Email'
+                errorMessage: msg.USER_CONFIRMMAIL_FAILED
             })
             .then(user => {
                 user.mailVerifyToken = undefined
                 user.mailVerified = true
                 return user
             })
-            .then(user => InPromise.mongo.save({entity: user, errorMessage: "Could not confirm Email"}))
-            .then(resUtil.successNoPayload(res, 'Your Email has been confirmed.'))
+            .then(user => InPromise.mongo.save({entity: user, errorMessage: msg.USER_CONFIRMMAIL_FAILED}))
+            .then(resUtil.successNoPayload(res, msg.USER_CONFIRMMAIL_DONE))
             .catch(resUtil.error(res))
     })
 
@@ -87,13 +89,13 @@ module.exports = function (app, express) {
                     schema: User,
                     criteria: {email: req.body.email},
                     select: 'name email password admin country location image active',
-                    errorMessage: "Incorrect Email or Password",
+                    errorMessage: msg.LOGIN_FAILED,
                     orFail: true
                 }))
-            .then(user => InPromise.if(user.comparePassword(req.body.password), user, "Incorrect Email or Password"))
+            .then(user => InPromise.if(user.comparePassword(req.body.password), user, msg.LOGIN_FAILED))
             .then(user => {
                 if(!user.active){
-                    throw "Your account is not active"
+                    throw msg.LOGIN_INACTIVE
                 }
                 return user
             })
@@ -117,11 +119,11 @@ module.exports = function (app, express) {
                     login.token = response.token
                     return login
                 })
-                .then(login => InPromise.mongo.save({entity: login, errorMessage: "Could not login"}))
+                .then(login => InPromise.mongo.save({entity: login, errorMessage: msg.LOGIN_FAILED_ERROR}))
                 .then(() => response)
             )
             .then(resUtil.respond(res))
-            .catch(resUtil.error(res, null, "Incorrect Email or Password"))
+            .catch(resUtil.error(res, null, msg.LOGIN_FAILED))
     })
 
     return authRouter

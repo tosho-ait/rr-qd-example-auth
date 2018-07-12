@@ -4,6 +4,8 @@ var resUtil = require('../../util/resutil.js')
 var valid = require('../../util/valid.js')
 var config = require('../../../config')
 var validators = require('../../validators/validators.js')
+var msg = require('../../res/msg')
+
 
 module.exports = function (app, express) {
     let userRouter = express.Router()
@@ -13,7 +15,7 @@ module.exports = function (app, express) {
             .findOne({
                 schema: User,
                 criteria: {'_id': req.decoded.user._id},
-                errorMessage: 'Could not update your Account',
+                errorMessage: msg.USER_UPDATE_FAILED,
                 orFail: true
             })
             .then(user => InPromise.valid(validators.userUpdate, req.body, {user}).then(() => user))
@@ -25,8 +27,8 @@ module.exports = function (app, express) {
                 user.image = req.body.image
                 return user
             })
-            .then(user => InPromise.mongo.save({entity: user, errorMessage: 'Could not update your Account'}))
-            .then(resUtil.successNoPayload(res, 'Account updated'))
+            .then(user => InPromise.mongo.save({entity: user, errorMessage: msg.USER_UPDATE_FAILED}))
+            .then(resUtil.successNoPayload(res, msg.USER_UPDATE_DONE))
             .catch(resUtil.error(res))
     })
 

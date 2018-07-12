@@ -2,6 +2,8 @@ var Image = require('../../models/image')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
 var sharp = require('sharp')
+var msg = require('../../res/msg')
+
 
 module.exports = function (app, express) {
     let uploadRouter = express.Router()
@@ -28,7 +30,7 @@ module.exports = function (app, express) {
             }))
             .then(img => InPromise.mongo.save({entity: new Image(img)}))
             .then(saved => ({path: req.file.path, filename: req.file.filename, fileid: saved._id}))
-            .then(resUtil.success(res, 'Image saved.'))
+            .then(resUtil.success(res, msg.IMAGE_SAVED))
             .catch(resUtil.error(res))
     })
 

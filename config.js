@@ -1,23 +1,24 @@
 module.exports = {
-    'port': process.env.BSPORT || 88,
-    'database': process.env.BSDB || 'mongodb://rrqdbs:rrqdbs124pas@8.9.15.150:27017/rrqdbs',
+    port: process.env.BSPORT || 88,
+    database: process.env.BSDB || 'mongodb://rrqdbs:rrqdbs124pas@8.9.15.150:27017/rrqdbs',
 
-    'secret': process.env.BSSCT || '<secret>',
+    secret: process.env.BSSCT || '<secret>',
+    tokenDuration: 1440 * 60 * 15,
 
-    'mailservice': process.env.BSEML || 'gmail',
-    'mailuser': process.env.BSEMLU || 'budget.simply.io@gmail.com',
-    'mailpass': process.env.BSEMLP || 'budgetsimply123',
+    mailservice: process.env.BSEML || 'gmail',
+    mailuser: process.env.BSEMLU || 'budget.simply.io@gmail.com',
+    mailpass: process.env.BSEMLP || 'budgetsimply123',
 
-    'userActiveOnRegister': true,
-    'userVerifyMailOnRegister': true,
+    userActiveOnRegister: true,
+    userVerifyMailOnRegister: true,
 
-    'userVerifyMailSubject': 'Confirm Your Email',
-    'userVerifyMailText': (token) =>
+    userVerifyMailSubject: 'Confirm Your Email',
+    userVerifyMailText: (token) =>
         'Please click on the following link to complete your registration:\n\n' +
         'http://budgetsimply.io/#confirm?token=' + token + '\n\n',
 
-    'userPwdResetMailSubject': 'Confirm Password Reset',
-    'userPwdResetMailText': (token) =>
+    userPwdResetMailSubject: 'Confirm Password Reset',
+    userPwdResetMailText: (token) =>
             'You are receiving this because you (or someone else) have requested the reset of the password for your budgetsimply.io account.\n\n' +
             'Please click on the following link to complete the reset:\n\n' +
             'http://budgetsimply.io/#recover?token=' + token + '\n\n' +

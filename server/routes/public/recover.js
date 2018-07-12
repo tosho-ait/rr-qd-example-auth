@@ -8,6 +8,7 @@ var resUtil = require('../../util/resutil.js')
 var validators = require('../../validators/validators.js')
 var msg = require('../../res/msg')
 
+
 module.exports = function (app, express) {
     let recoverRouter = express.Router()
 
@@ -21,7 +22,7 @@ module.exports = function (app, express) {
                     resetPasswordExpires: {$gt: Date.now()},
                 },
                 orFail: true,
-                errorMessage: 'Password reset link is invalid or has expired'
+                errorMessage: msg.LOGIN_RESET_EXPIRED
             })
             .then(user => InPromise.valid(validators.passwordReset, req.body).then(() => user))
             .then(user => {
@@ -30,8 +31,8 @@ module.exports = function (app, express) {
                 user.resetPasswordExpires = undefined
                 return user
             })
-            .then(user => InPromise.mongo.save({entity: user, errorMessage: "Could not reset your password."}))
-            .then(resUtil.successNoPayload(res, 'Your password has been successfully updated.'))
+            .then(user => InPromise.mongo.save({entity: user, errorMessage: msg.LOGIN_RESET_FAILED}))
+            .then(resUtil.successNoPayload(res, msg.LOGIN_RESET_DONE))
             .catch(resUtil.error(res))
     })
 
@@ -45,7 +46,7 @@ module.exports = function (app, express) {
                 .findOne({
                     schema: User,
                     criteria: {email: req.body.email},
-                    errorMessage: 'No account with that email address exists.',
+                    errorMessage: msg.LOGIN_RESET_NOEMAIL,
                     orFail: true
                 })
                 .then(user => ({token, user})))
@@ -65,8 +66,8 @@ module.exports = function (app, express) {
                 subject: config.userPwdResetMailSubject,
                 text: config.userPwdResetMailText(pair.token)
             }))
-            .then(resUtil.successNoPayload(res, 'An email has been sent to ' + req.body.email + ' with further instructions.'))
-            .catch(resUtil.error(res, null, "Could not reset your password."))
+            .then(resUtil.successNoPayload(res, msg.LOGIN_RESET_MAILSENT))
+            .catch(resUtil.error(res, null, msg.LOGIN_RESET_FAILED))
     })
 
     return recoverRouter
