@@ -17,7 +17,7 @@ module.exports = function (app, express) {
             // verifies secret and checks exp
             jwt.verify(token, superSecret, function (err, decoded) {
                 if (err) {
-                    res.status(403).send({message: 'Failed to authenticate token.'})
+                    res.status(403).send({message: "failed to authenticate token"})
                 } else {
                     // if everything is good, save to request for use in other routes
                     req.decoded = decoded
@@ -27,7 +27,7 @@ module.exports = function (app, express) {
             })
         } else {
             // if no token return an HTTP response of 403 and an error message
-            res.status(403).send({message: 'No token provided.'})
+            res.status(403).send({message: "no token provided"})
         }
     })
 

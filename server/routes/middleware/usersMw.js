@@ -6,7 +6,7 @@ module.exports = function (app, express) {
     usersMw.use(function (req, res, next) {
         User.find({}, function (err, all) {
             if (err) {
-                res.status(418).json({message: "Internal error!"})
+                res.status(418).json({message: "internal error"})
             } else {
                 var map = all.map(user => ({_id: user._id, email: user.email}))
                 map.getMail = id => map.filter(user => user._id == id)[0].email

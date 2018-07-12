@@ -43,7 +43,12 @@ module.exports = {
     PASSCONFIRM_NOMATCH: "Passwords do not match.",
 
     IMAGE_SAVED:  "Image saved.",
-    IMAGE_NOT_FOUND:  "Image not found."
+    IMAGE_NOT_FOUND:  "Image not found.",
+
+    OP_FAILED: "Operation failed.",
+    OP_DONE: "Done.",
+
+
 
 
 }
