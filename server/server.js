@@ -49,7 +49,8 @@ module.exports = function (express, config) {
 
     // Admin ROUTES
     // TODO to be secured
-    construct.addRoutes([SECURE_MW, ALL_USERS_MW], '/api/admin', require('./routes/admin/admin'))
+    construct.addRoutes([SECURE_MW, ALL_USERS_MW],
+        '/api/admin', require('./routes/admin/admin'))
 
     // handle multipart requests
     app.use(multer({
@@ -59,7 +60,8 @@ module.exports = function (express, config) {
         }
     }).single('file'))
 
-    construct.addRoutes([SECURE_MW], '/api/upload', require('./routes/protected/upload'))
+    construct.addRoutes([SECURE_MW],
+        '/api/upload', require('./routes/protected/upload'))
 
     return app
 }
