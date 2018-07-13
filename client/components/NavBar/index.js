@@ -17,14 +17,14 @@ class NavBar extends React.Component {
                 <Nav pullRight>
                     <NavDropdown title={auth.userDetails.name} id="basic-nav-dropdown">
                         <li><RrAction action={routeDo} values={["settings", {}]}>
-                            <i class="glyphicon glyphicon-cog"/> User settings</RrAction></li>
+                            <i class="glyphicon glyphicon-cog"/>&nbsp;&nbsp;User settings</RrAction></li>
                         { auth.userDetails.admin &&
                         <li><RrAction action={routeDo} values={["admin", {}]}>
-                            <i class="glyphicon glyphicon-king"/> Admin panel</RrAction>
+                            <i class="glyphicon glyphicon-king"/>&nbsp;&nbsp;Admin panel</RrAction>
                         </li> }
                         <MenuItem divider/>
                         <li><RrAction action={logoutDo}>
-                            <i class="glyphicon glyphicon-log-out"/> Logout</RrAction></li>
+                            <i class="glyphicon glyphicon-log-out"/>&nbsp;&nbsp;Logout</RrAction></li>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
