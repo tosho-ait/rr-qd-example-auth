@@ -98,7 +98,7 @@ class SettingsForm extends React.Component {
                                 </div>
                                 <div class="col-xs-12">
                                     <br />
-                                    <label>Update your password</label>
+                                    <br />
                                     <hr class="mt0"/>
                                 </div>
                                 <div class="col-xs-12">

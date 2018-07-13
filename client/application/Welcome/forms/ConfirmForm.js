@@ -1,8 +1,8 @@
 import React from "react"
 import {reduxForm} from "redux-form"
-import {confirmEmailSubmit} from "../../actions/api"
+import {confirmEmailSubmit} from "../../../actions/api"
 import {RrAction} from "rr-qd"
-import {routeDo} from "../../actions/app"
+import {routeDo} from "../../../actions/app"
 
 class ConfirmForm extends React.Component {
     render() {
@@ -18,7 +18,7 @@ class ConfirmForm extends React.Component {
                         <div class="form-group fg-custom">
                             <div class="border-top">
                                 <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to
-                                    Login</RrAction>
+                                    login</RrAction>
                                 <button type="submit" disabled={submitting} class="btn btn-success pull-right">
                                     <span>Confirm e-mail</span>
                                 </button>

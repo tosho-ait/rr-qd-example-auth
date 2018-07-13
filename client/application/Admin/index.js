@@ -21,8 +21,8 @@ class Admin extends React.Component {
         return [[
             {title: 'email'},
             {title: 'name'},
-            {title: 'reg date'},
-            {title: 'active'}]]
+            {title: 'active'},
+            {title: 'reg date'}]]
     }
 
     _body() {
@@ -43,11 +43,10 @@ class Admin extends React.Component {
 
                 },
                 cells: [
-                    {value: user.email},
+                    {value: user.email, width: 300},
                     {value: user.name},
-                    {value: moment(user.created_at).format("DD MM YYYY")},
-                    {value: user.active ? "yes" :"no"},
-
+                    {value: user.active ? "yes" :"no", width: 100},
+                    {value: moment(user.created_at).format("DD MM YYYY"), width: 110}
                 ]
             })
         })

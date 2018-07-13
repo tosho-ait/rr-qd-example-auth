@@ -1,6 +1,6 @@
 import React from "react"
 import NavBar from "../../components/NavBar"
-import LoginForm from "./LoginForm"
+import LoginForm from "./forms/LoginForm"
 import WelcomeJumbo from "./WelcomeJumbo"
 import "../_res/style.css"
 

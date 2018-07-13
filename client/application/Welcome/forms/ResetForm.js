@@ -1,9 +1,9 @@
 import React, {Component} from "react"
 import {reduxForm} from "redux-form"
-import {resetFormSubmit} from "../../actions/api"
+import {resetFormSubmit} from "../../../actions/api"
 import {RrAction} from "rr-qd"
-import FormFieldError from "../../fancy/FormFieldError"
-import {routeDo} from "../../actions/app"
+import FormFieldError from "../../../fancy/FormFieldError"
+import {routeDo} from "../../../actions/app"
 
 class ResetForm extends Component {
     render() {
@@ -26,7 +26,7 @@ class ResetForm extends Component {
                         <div class="form-group fg-custom">
                             <div class="border-top">
                                 <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to
-                                    Login</RrAction>
+                                    login</RrAction>
                                 <button type="submit" disabled={submitting} class="btn btn-success pull-right">
                                     <span>Reset</span>
                                 </button>

@@ -1,6 +1,6 @@
 import React from "react"
 import NavBar from "../../components/NavBar"
-import RecoverForm from "./RecoverForm"
+import RecoverForm from "./forms/RecoverForm"
 import WelcomeJumbo from "./WelcomeJumbo"
 import "../_res/style.css"
 

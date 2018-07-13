@@ -1,9 +1,9 @@
 import React from "react"
 import {reduxForm} from "redux-form"
 import {RrAction} from "rr-qd"
-import FormFieldError from "../../fancy/FormFieldError"
-import {loginSubmit} from "../../actions/api"
-import {routeDo} from "../../actions/app"
+import FormFieldError from "../../../fancy/FormFieldError"
+import {loginSubmit} from "../../../actions/api"
+import {routeDo} from "../../../actions/app"
 
 class LoginForm extends React.Component {
     render() {
@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
                         <div class="form-group fg-custom">
                             <div class="border-top">
                                 Don't have an account? <RrAction action={routeDo} values={["register"]}>Sign up
-                                here</RrAction>
+                                here.</RrAction>
                             </div>
                         </div>
                     </form>

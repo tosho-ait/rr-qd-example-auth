@@ -1,11 +1,11 @@
 import React from "react"
 import NavBar from "../../components/NavBar"
-import RegisterForm from "./RegisterForm"
+import ResetForm from "./forms/ResetForm"
 import WelcomeJumbo from "./WelcomeJumbo"
 import "../_res/style.css"
 
-const LayoutWelcomeReg = () => {
-    return <div class="white">
+const LayoutWelcomeRst = () => {
+    return <div>
         <NavBar />
         <div class="container">
             <div class="row">
@@ -13,11 +13,11 @@ const LayoutWelcomeReg = () => {
                     <WelcomeJumbo />
                 </div>
                 <div class="col-md-6">
-                    <RegisterForm />
+                    <ResetForm />
                 </div>
             </div>
         </div>
     </div>
 }
 
-export default LayoutWelcomeReg
+export default LayoutWelcomeRst
