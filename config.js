@@ -15,13 +15,13 @@ module.exports = {
     userVerifyMailSubject: 'Confirm Your Email',
     userVerifyMailText: (token) =>
         'Please click on the following link to complete your registration:\n\n' +
-        'http://budgetsimply.io/#confirm?token=' + token + '\n\n',
+        'http://website/#confirm?token=' + token + '\n\n',
 
     userPwdResetMailSubject: 'Confirm Password Reset',
     userPwdResetMailText: (token) =>
-            'You are receiving this because you (or someone else) have requested the reset of the password for your budgetsimply.io account.\n\n' +
+            'You are receiving this because you (or someone else) have requested the reset of the password for your website account.\n\n' +
             'Please click on the following link to complete the reset:\n\n' +
-            'http://budgetsimply.io/#recover?token=' + token + '\n\n' +
+            'http://website/#recover?token=' + token + '\n\n' +
             'If you did not request this, please ignore this email and your password will remain unchanged.\n'
 
 }
