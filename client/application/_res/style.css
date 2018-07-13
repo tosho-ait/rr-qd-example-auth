@@ -111,3 +111,8 @@
     cursor: inherit;
     display: block;
 }
+
+.panel-info {
+    margin-top: 20px;
+    border-color: #999 !important;
+}

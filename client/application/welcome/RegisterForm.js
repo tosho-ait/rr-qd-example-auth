@@ -17,12 +17,12 @@ class RegisterForm extends Component {
                     </div>
                     <div>
                         <div class="fg-custom form-group">
-                            <label>E-Mail</label>
+                            <label>E-mail</label>
                             <input class="form-control" type="email" {...email}/>
                             <FormFieldError field={email}/>
                         </div>
                         <div class="form-group fg-custom">
-                            <label>Name and Surname</label>
+                            <label>Name</label>
                             <input class="form-control" type="text" {...name}/>
                             <FormFieldError field={name}/>
                         </div>
@@ -32,7 +32,7 @@ class RegisterForm extends Component {
                             <FormFieldError field={password}/>
                         </div>
                         <div class="form-group fg-custom">
-                            <label>Confirm Password</label>
+                            <label>Confirm password</label>
                             <input class="form-control" type="password" {...passwordconfirm}/>
                             <FormFieldError field={passwordconfirm}/>
                         </div>
@@ -41,7 +41,7 @@ class RegisterForm extends Component {
                         <div class="border-top">
                             <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to Login</RrAction>
                             <button type="submit" disabled={submitting} class="btn btn-success pull-right">
-                                <span>Sign Up</span>
+                                <span>Sign up</span>
                             </button>
                         </div>
                     </div>

@@ -12,7 +12,7 @@ class ConfirmForm extends React.Component {
                 <div class="panel-body">
                     <form class="form-horizontal" onSubmit={handleSubmit}>
                         <div class="form-group fg-custom">
-                            <h2>Confirm Email</h2>
+                            <h2>Confirm e-mail</h2>
                             {error && <div class="alert alert-danger"> {error} </div>}
                         </div>
                         <div class="form-group fg-custom">
@@ -20,7 +20,7 @@ class ConfirmForm extends React.Component {
                                 <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to
                                     Login</RrAction>
                                 <button type="submit" disabled={submitting} class="btn btn-success pull-right">
-                                    <span>Confirm Email</span>
+                                    <span>Confirm e-mail</span>
                                 </button>
                             </div>
                         </div>

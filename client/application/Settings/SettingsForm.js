@@ -61,7 +61,7 @@ class SettingsForm extends React.Component {
 
         return <form onSubmit={handleSubmit}>
             <div class="row">
-                <div class="col-md-10 col-md-offset-1"><h1>Account Settings</h1></div>
+                <div class="col-md-10 col-md-offset-1"><h1>Account settings</h1></div>
                 <div class="col-md-10 col-md-offset-1">
                     <hr />
                 </div>
@@ -85,7 +85,7 @@ class SettingsForm extends React.Component {
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="form-group">
-                                        <label>E-Mail</label>
+                                        <label>E-mail</label>
                                         <input disabled class="form-control" type="text" {...email}/>
                                     </div>
                                 </div>
@@ -98,26 +98,26 @@ class SettingsForm extends React.Component {
                                 </div>
                                 <div class="col-xs-12">
                                     <br />
-                                    <label>Update your Password</label>
+                                    <label>Update your password</label>
                                     <hr class="mt0"/>
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="form-group">
-                                        <label>New Password</label>
+                                        <label>New password</label>
                                         <input class="form-control" type="password" {...password}/>
                                         <FormFieldError field={password}/>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="form-group">
-                                        <label>Confirm Password</label>
+                                        <label>Confirm password</label>
                                         <input class="form-control" type="password" {...passwordconfirm}/>
                                         <FormFieldError field={passwordconfirm}/>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="form-group">
-                                        <label>Current Password</label>
+                                        <label>Current password</label>
                                         <input class="form-control" type="password" {...oldpassword}/>
                                         <FormFieldError field={oldpassword}/>
                                     </div>
@@ -131,7 +131,7 @@ class SettingsForm extends React.Component {
                 </div>
                 <div class="col-md-10 col-md-offset-1 text-right">
                     <button type="submit" class="btn btn-default">
-                        <span>Save Settings</span>
+                        <span>Save settings</span>
                     </button>
                     <br />
                     <br />

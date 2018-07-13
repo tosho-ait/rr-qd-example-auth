@@ -13,7 +13,7 @@ class ResetForm extends Component {
                 <div class="panel-body">
                     <form class="form-horizontal" onSubmit={handleSubmit}>
                         <div class="form-group fg-custom">
-                            <h2>Reset Your Password</h2>
+                            <h2>Reset your password</h2>
                             {error && <div class="alert alert-danger"> {error} </div>}
                         </div>
                         <div>

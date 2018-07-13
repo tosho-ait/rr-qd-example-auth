@@ -61,7 +61,7 @@ class Admin extends React.Component {
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h1>Admin Panel</h1>
+                        <h1>Admin panel</h1>
                     </div>
                     <div class="col-sm-12">
                         <hr />

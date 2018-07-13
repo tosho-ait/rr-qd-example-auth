@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
                         </div>
                         <div>
                             <div class="fg-custom form-group">
-                                <label>E-Mail</label>
+                                <label>E-mail</label>
                                 <input class="form-control" type="email" {...email}/>
                                 <FormFieldError field={email}/>
                             </div>
@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
                         </div>
                         <div class="form-group fg-custom">
                             <div class="input-group">
-                                <RrAction action={routeDo} values={["reset"]} label="Forgot Password?"/>
+                                <RrAction action={routeDo} values={["reset"]} label="Forgot your password?"/>
                             </div>
                         </div>
                         <div class="form-group fg-custom">
@@ -42,8 +42,8 @@ class LoginForm extends React.Component {
                         </div>
                         <div class="form-group fg-custom">
                             <div class="border-top">
-                                Don't have an account? <RrAction action={routeDo} values={["register"]}>Sign Up
-                                Here</RrAction>
+                                Don't have an account? <RrAction action={routeDo} values={["register"]}>Sign up
+                                here</RrAction>
                             </div>
                         </div>
                     </form>

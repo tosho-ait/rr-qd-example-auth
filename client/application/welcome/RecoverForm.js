@@ -13,7 +13,7 @@ class RecoverForm extends React.Component {
                 <div class="panel-body">
                     <form class="form-horizontal" onSubmit={handleSubmit}>
                         <div class="form-group fg-custom">
-                            <h2>Reset Password</h2>
+                            <h2>Reset password</h2>
                             {error && <div class="alert alert-danger"> {error} </div>}
                         </div>
                         <div>
@@ -23,7 +23,7 @@ class RecoverForm extends React.Component {
                                 <FormFieldError field={password}/>
                             </div>
                             <div class="form-group fg-custom">
-                                <label>Confirm Password</label>
+                                <label>Confirm password</label>
                                 <input class="form-control" type="password" {...passwordconfirm} />
                                 <FormFieldError field={passwordconfirm}/>
                             </div>
@@ -33,7 +33,7 @@ class RecoverForm extends React.Component {
                                 <RrAction action={routeDo} values={[""]} classes="btn btn-warning">Back to
                                     Login</RrAction>
                                 <button type="submit" disabled={submitting} class="btn btn-success pull-right">
-                                    <span>Reset Password</span>
+                                    <span>Reset password</span>
                                 </button>
                             </div>
                         </div>

@@ -9,9 +9,9 @@ let Footer = () => {
             <div class="col-lg-12 text-center">
                 <RrAction action={routeDo} values={["", ""]} classes="gerylink" label="Home"/>
                 &nbsp;|&nbsp;
-                <RrAction action={routeDo} values={["terms", ""]} classes="gerylink" label="Terms of Service"/>
+                <RrAction action={routeDo} values={["terms", ""]} classes="gerylink" label="Terms of service"/>
                 &nbsp;|&nbsp;
-                <RrAction action={routeDo} values={["policy", ""]} classes="gerylink" label="Privacy Policy"/>
+                <RrAction action={routeDo} values={["policy", ""]} classes="gerylink" label="Privacy policy"/>
                 &nbsp;|&nbsp;
                 <RrAction action={routeDo} values={["about", ""]} classes="gerylink" label="About"/>
             </div>
