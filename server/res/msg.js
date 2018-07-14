@@ -21,7 +21,6 @@ module.exports = {
     LOGIN_RESET_NOEMAIL: "No account with this email address exists.",
     LOGIN_RESET_MAILSENT: "We sent you a password reset link. Please check your mailbox.",
 
-
     USER_UPDATE_FAILED: "Could not update account.",
     USER_UPDATE_DONE: "Account updated.",
 
@@ -32,6 +31,7 @@ module.exports = {
     USERNAME_REQUIRED: "Enter a name.",
     USERNAME_MIN8: "Name must be at least 8 characters.",
     USERNAME_MAX25: "Name must be no more than 25 characters.",
+    USERNAME_CHARACTERS: "Name can contain only alphanumeric characters and spaces.",
 
     PASSWORD_REQUIRED: "Enter a password.",
     PASSWORD_MIN8: "Password must be at least 8 characters.",
@@ -42,13 +42,12 @@ module.exports = {
 
     PASSCONFIRM_NOMATCH: "Passwords do not match.",
 
+
     IMAGE_SAVED:  "Image saved.",
     IMAGE_NOT_FOUND:  "Image not found.",
 
     OP_FAILED: "Operation failed.",
     OP_DONE: "Done.",
-
-
 
 
 }

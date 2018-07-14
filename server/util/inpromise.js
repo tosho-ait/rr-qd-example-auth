@@ -1,4 +1,4 @@
-var valid = require('./valid.js')
+var validator = require('./validator.js')
 var nodemailer = require('nodemailer')
 
 var InPromise = {
@@ -17,28 +17,26 @@ var InPromise = {
             })
         }
     },
-    valid: (criteria, target, context) => valid(criteria, target, context),
-    if: (condition, onTrue, onFalse)=> {
-        return new Promise((resolve, reject)=> {
+    valid: (criteria, target, context) => validator.validate(criteria, target, context),
+    if: (condition, onTrue, onFalse) =>
+        new Promise((resolve, reject) => {
             if (condition) {
                 resolve(onTrue)
             } else {
                 reject(onFalse)
             }
-        })
-    },
-    do: (func)=> {
-        return new Promise((resolve, reject)=> {
+        }),
+    do: (func) =>
+        new Promise((resolve, reject)=> {
             try {
                 resolve(func())
             } catch (error) {
                 reject(error)
             }
-        })
-    },
+        }),
     mongo: {
-        findOne: ({schema, criteria, errorMessage, limit, lean, orFail, select}) => {
-            return new Promise((resolve, reject) => {
+        findOne: ({schema, criteria, errorMessage, limit, lean, orFail, select}) =>
+            new Promise((resolve, reject) => {
                 if (!criteria) {
                     criteria = {}
                 }
@@ -57,10 +55,9 @@ var InPromise = {
                     if (!result && orFail) reject({errorMessage})
                     resolve(result)
                 })
-            })
-        },
-        find: ({schema, criteria, errorMessage, limit, lean, orFail}) => {
-            return new Promise((resolve, reject) => {
+            }),
+        find: ({schema, criteria, errorMessage, limit, lean, orFail}) =>
+            new Promise((resolve, reject) => {
                 if (!criteria) {
                     criteria = {}
                 }
@@ -76,43 +73,38 @@ var InPromise = {
                     if (!result && orFail) reject({errorMessage})
                     resolve(result)
                 })
-            })
-        },
-        count: ({schema, criteria, errorMessage}) => {
-            return new Promise((resolve, reject) => {
+            }),
+        count: ({schema, criteria, errorMessage}) =>
+            new Promise((resolve, reject) => {
                 schema.count(criteria).exec((error, result) => {
                     if (error) reject({error, errorMessage})
                     if (!result) resolve(0)
                     if (result) resolve(result)
                 })
-            })
-        },
-        save: ({entity, errorMessage}) => {
-            return new Promise((resolve, reject) => {
+            }),
+        save: ({entity, errorMessage}) =>
+            new Promise((resolve, reject) => {
                 entity.save((error, saved) => {
                     if (error) {
                         reject({error, errorMessage})
                     }
                     else resolve(saved)
                 })
-            })
-        },
-        remove: ({schema, criteria, errorMessage})=> {
-            return new Promise((resolve, reject) => {
+            }),
+        remove: ({schema, criteria, errorMessage}) =>
+            new Promise((resolve, reject) => {
                 schema.remove(criteria, (error) => {
                     if (error) reject({error, errorMessage})
                     else resolve()
                 })
-            })
-        },
-        findOneAndUpdate: ({schema, criteria, entity, settings, errorMessage}) => {
-            return new Promise((resolve, reject)=> {
+            }),
+        findOneAndUpdate: ({schema, criteria, entity, settings, errorMessage}) =>
+            new Promise((resolve, reject)=> {
                 schema.findOneAndUpdate(criteria, entity, settings, (error) => {
                     if (error) reject({error, errorMessage})
                     else resolve()
                 })
-            })
-        },
+            }),
     },
     util: {
         sendmail: ({service, user, pass, to, subject, text}) => {

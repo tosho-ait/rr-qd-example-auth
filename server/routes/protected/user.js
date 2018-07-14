@@ -1,7 +1,6 @@
 var User = require('../../models/user')
 var InPromise = require('../../util/inpromise.js')
 var resUtil = require('../../util/resutil.js')
-var valid = require('../../util/valid.js')
 var config = require('../../../config')
 var validators = require('../../validators/validators.js')
 var msg = require('../../res/msg')
