@@ -4,8 +4,7 @@ import {bindActionCreators} from "redux"
 import NavBar from "../../components/NavBar"
 import MessageBar from "../../fancy/MessageBar"
 import PagedTable from "../../fancy/PagedTable"
-import {RrAction} from "rr-qd"
-import Stale from "../../fancy/Stale"
+import {RrAction, RrStale} from "rr-qd"
 import {adminUsers, adminActivateUser, adminDeactivateUser} from "../../actions/api"
 import moment from "moment"
 
@@ -55,7 +54,7 @@ class Admin extends React.Component {
 
     render() {
         return <div>
-            <Stale target={adminUsers} callOnInit/>
+            <RrStale target={adminUsers} callOnInit/>
             <NavBar />
             <div class="container">
                 <div class="row">
