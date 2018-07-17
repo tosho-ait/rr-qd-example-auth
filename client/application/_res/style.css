@@ -9,43 +9,6 @@
     padding-top: 15px;
 }
 
-.mt0 {
-    margin-top: 0;
-}
-
-.mt8 {
-    margin-top: 8px;
-}
-
-.mb5 {
-    margin-bottom: 5px;
-}
-
-.mb10 {
-    margin-bottom: 10px;
-}
-
-.m23t {
-    margin-top: 23px;
-}
-
-.m8t {
-    margin-top: 8px;
-}
-
-.p3lr {
-    padding-left: 3px;
-    padding-right: 3px;
-}
-
-.p5t {
-    padding-top: 5px;
-}
-
-.p7t {
-    padding-top: 5px;
-}
-
 .gerylink {
     color: #9d9d9d
 }
@@ -64,10 +27,6 @@
     margin-bottom: 20px;
 }
 
-.pt7 {
-    padding-top: 7px;
-}
-
 .inline {
     display: inline-block;
     vertical-align: top;
@@ -81,10 +40,6 @@
 
 .vmiddle {
     vertical-align: middle !important;
-}
-
-.w150 {
-    width: 150px;
 }
 
 .black-control .Select-control {

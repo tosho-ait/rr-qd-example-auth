@@ -22,6 +22,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "font-awesome/css/font-awesome.css"
 
 import "./_res/style.css"
+import "./_res/pixels.css"
 import "./_res/checkboxes.css"
 import "./_res/sticky-footer.css"
 
