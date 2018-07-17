@@ -1,13 +1,14 @@
 module.exports = {
     port: process.env.BSPORT || 88,
-    database: process.env.BSDB || 'mongodb://rrqdbs:rrqdbs124pas@8.9.15.150:27017/rrqdbs',
+    database: process.env.BSDB || 'mongodb://<dbuser>:<dbpass>@<server>:<port>/<db>',
 
     secret: process.env.BSSCT || '<secret>',
     tokenDuration: 1440 * 60 * 15,
 
-    mailservice: process.env.BSEML || 'gmail',
-    mailuser: process.env.BSEMLU || 'budget.simply.io@gmail.com',
-    mailpass: process.env.BSEMLP || 'budgetsimply123',
+    // mail service, used to send email confirmation and password reset mails
+    mailservice: process.env.BSEML || '<mail_service_type>', // examle 'gmail'
+    mailuser: process.env.BSEMLU || '<mail_address>',
+    mailpass: process.env.BSEMLP || '<mail_pass>',
 
     userActiveOnRegister: true,
     userVerifyMailOnRegister: true,
@@ -23,5 +24,4 @@ module.exports = {
             'Please click on the following link to complete the reset:\n\n' +
             'http://website/#recover?token=' + token + '\n\n' +
             'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-
 }
