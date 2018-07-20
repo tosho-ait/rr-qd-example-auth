@@ -1,4 +1,4 @@
-# rr-qd-example-auth
+# RR-QD Example Auth App
 
 An example application that demonstrates how to implement a web application with the [rr-qd](https://github.com/tosho-ait/rr-qd/blob/master/README.md) framework. 
 
