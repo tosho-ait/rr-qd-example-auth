@@ -7,6 +7,6 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_MAIL docker.netbits.io:443
       - docker build --rm=false -t docker.netbits.io:443/netbits/rr-qd-example-auth:latest .
       - docker push docker.netbits.io:443/netbits/rr-qd-example-auth:latest
