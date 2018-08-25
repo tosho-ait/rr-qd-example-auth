@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "nodemon --watch server --watch config.js --watch client/static server.dev.js",
     "prod": "webpack --progress --config webpack.prod.js && node server.prod.js",
-    "pack": "wesudobpack --progress --config webpack.prod.js"
+    "pack": "webpack --progress --config webpack.prod.js"
   },
   "dependencies": {
     "async": "^2.0.0-rc.6",
